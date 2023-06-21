@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -56,7 +57,11 @@ namespace RPGDev
                         break;
                     case "2":
                         Console.WriteLine("\nSeu Personagem: ");
-                        Console.WriteLine(listaPersonagens);
+                        foreach (Personagem personagem in listaPersonagens)
+                        {
+
+                           Console.WriteLine(personagem.ToString());
+                        }
                         break;
                     case "3":
                         flag = true;

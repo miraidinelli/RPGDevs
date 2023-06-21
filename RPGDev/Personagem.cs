@@ -12,13 +12,14 @@ namespace RPGDev
         public int HP { get; set; }
         public int Ataque { get; set; }
         public int Defesa { get; set; }
+        public string Classe { get; set; }
         public Habilidade Habilidade { get; set; }
 
         public Personagem ConstruirPersonagem()
         {
+            Personagem p = new Personagem();
             int ataque = 0;
             int defesa = 0;
-            
 
             Console.WriteLine("Digite o Nome");
             string nome = Console.ReadLine();
@@ -29,27 +30,35 @@ namespace RPGDev
                 case "1":
                     ataque = 7;
                     defesa = 3;
+                    tipo = "Atacante";
                     break;
                 case "2":
                     ataque = 3;
                     defesa = 7;
+                    tipo = "Defensor";
                     break;
                 case "3":
                     ataque = 5;
                     defesa = 5;
+                    tipo = "Misto";
                     break;
              
             }
             int hp = defesa * 2;
             int atributo = ataque;
 
+            p.HP = hp;
+            p.Ataque = atributo;   
+            p.Defesa = defesa;
+            p.Nome = nome;
+            p.Classe = tipo;
 
-            return this;
+            return p;
         }
         // Sobrescrevendo o ToString 
         public override string ToString()
         {
-            return $"Nome: {Nome}, Hp: {HP}, Ataque{Ataque}, Defesa{Defesa}";
+            return $"Nome: {Nome}, Hp: {HP}, Ataque: {Ataque}, Defesa: {Defesa}, Tipo: {Classe}";
         }
     }
 
