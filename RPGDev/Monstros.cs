@@ -14,36 +14,37 @@ namespace RPGDev
         public int MobExperiencia { get; set; }
         public double Multiplicador { get; set; }
 
-        public Monstros Mob01()
+        public Monstros Mob01(double mult)
         {
             IdMonstro = 1;
             TipoMonstro = "COMUN";
             MobExperiencia = 10;
-            HP = 10;
-            Defesa = 10;
-            Ataque = 4;
+            
+            HP = (int)(10 * mult);
+            Defesa = (int)(10 * mult);
+            Ataque = (int)(10 * mult);
             return this;
 
         }
-        public Monstros Mob02()
+        public Monstros Mob02(double mult)
         {
             IdMonstro = 1;
             TipoMonstro = "RARO";
-            MobExperiencia = 10;
-            HP = 10;
-            Defesa = 10;
-            Ataque = 4;
+            MobExperiencia = (int)(15 * mult);
+            HP = (int)(15 * mult);
+            Defesa = (int)(15 * mult);
+            Ataque = (int)(15 * mult);
             return this;
 
         }
-        public Monstros Mob03()
+        public Monstros Mob03(double mult)
         {
             IdMonstro = 1;
             TipoMonstro = "CHEFE";
-            MobExperiencia = 20;
-            HP = 10;
-            Defesa = 10;
-            Ataque = 4;
+            MobExperiencia = (int)(20 * mult);
+            HP = (int)(20 * mult);
+            Defesa = (int)(20 * mult);
+            Ataque = (int)(20 * mult);
             return this;
 
         }
