@@ -15,34 +15,7 @@ namespace RPGDev
         {
             // MInha tentativa inicial de fazer um construtor de personagem
             bool flag = false;
-            (string, int, int, int, int)ConstruirPersonagem()
-            {
-                int ataque = 0;
-                int defesa = 0;
-                int hp = defesa * 2;
-                int atributo = ataque;
-
-                Console.WriteLine("Digite o Nome");
-                string nome = Console.ReadLine();
-                Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
-                string tipo = Console.ReadLine();
-                switch (tipo)
-                {
-                    case "1":
-                        ataque = 7;
-                        defesa = 3;
-                        break;
-                    case "2":
-                        ataque = 3;
-                        defesa = 7;
-                        break;
-                    case "3":
-                        ataque = 5;
-                        defesa = 5;
-                        break;
-                }
-                return (nome, ataque, defesa, hp, atributo);
-            }
+           
             while (!flag)
             {
                 Console.WriteLine("Criação de Personagem");
@@ -65,12 +38,15 @@ namespace RPGDev
                             {
                                 case "1":
                                 Guerreiro guerreiro = new Guerreiro();
+                                guerreiro.ConstruirPersonagem();
                                     break;
                                 case "2":
                                 Mago mago = new Mago();
+                                    mago.ConstruirPersonagem();
                                     break;
                                 case "3":
                                 Ranger ranger = new Ranger();
+                                ranger.ConstruirPersonagem();
                                 break;
                             }
                         break;

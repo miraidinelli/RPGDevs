@@ -13,6 +13,37 @@ namespace RPGDev
         public int Ataque { get; set; }
         public int Defesa { get; set; }
         public Habilidade Habilidade { get; set; }
+
+        public Personagem ConstruirPersonagem()
+        {
+            int ataque = 0;
+            int defesa = 0;
+            int hp = defesa * 2;
+            int atributo = ataque;
+
+            Console.WriteLine("Digite o Nome");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
+            string tipo = Console.ReadLine();
+            switch (tipo)
+            {
+                case "1":
+                    ataque = 7;
+                    defesa = 3;
+                    break;
+                case "2":
+                    ataque = 3;
+                    defesa = 7;
+                    break;
+                case "3":
+                    ataque = 5;
+                    defesa = 5;
+                    break;
+             
+            }
+            return this;
+        }
+
     }
 
     public class Guerreiro : Personagem
@@ -27,6 +58,7 @@ namespace RPGDev
             Defesa = defesa;
             Forca = forca;
         }
+        public Guerreiro() { }
     }
 
     public class Mago : Personagem
@@ -41,6 +73,7 @@ namespace RPGDev
             Defesa = defesa;
             Magia = magia;
         }
+        public Mago() { }
     }
 
     public class Ranger : Personagem
@@ -55,5 +88,6 @@ namespace RPGDev
             Defesa = defesa;
             Destreza = destreza;
         }
+        public Ranger() { } 
     }
 }
