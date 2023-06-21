@@ -15,10 +15,11 @@ namespace RPGDev
         {
             // MInha tentativa inicial de fazer um construtor de personagem
             bool flag = false;
+            List<Personagem> listaPersonagens = new List<Personagem>();
            
             while (!flag)
             {
-                Console.WriteLine("Criação de Personagem");
+                Console.WriteLine("\nCriação de Personagem");
                 Console.WriteLine("Digite uma Opção para Começar");
                 Console.WriteLine("1 - Criar Personagem");
                 Console.WriteLine("2 - Mostrar Personagem");
@@ -28,7 +29,7 @@ namespace RPGDev
                 switch (opcao)
                 {
                     case "1":
-                            Console.WriteLine("Digite a Clase do seu Personagem:");
+                            Console.WriteLine("\nDigite a Clase do seu Personagem:");
                             Console.WriteLine("Digite o Númeo Desejado");
                             Console.WriteLine("1 - Guerreiro");
                             Console.WriteLine("2 - Mago");
@@ -37,28 +38,31 @@ namespace RPGDev
                             switch(classe)
                             {
                                 case "1":
+
                                 Guerreiro guerreiro = new Guerreiro();
-                                guerreiro.ConstruirPersonagem();
+                                listaPersonagens.Add(guerreiro.ConstruirPersonagem());
                                     break;
                                 case "2":
+
                                 Mago mago = new Mago();
-                                    mago.ConstruirPersonagem();
-                                    break;
+                                listaPersonagens.Add(mago.ConstruirPersonagem());
+                                break;
                                 case "3":
+
                                 Ranger ranger = new Ranger();
-                                ranger.ConstruirPersonagem();
+                                listaPersonagens.Add(ranger.ConstruirPersonagem());
                                 break;
                             }
                         break;
                     case "2":
-                        Console.WriteLine("Seu Personagem: ");
-
+                        Console.WriteLine("\nSeu Personagem: ");
+                        Console.WriteLine(listaPersonagens);
                         break;
                     case "3":
                         flag = true;
                         break;
                     default:
-                        Console.WriteLine("Opção inválida! Tente novamente.");
+                        Console.WriteLine("\nOpção inválida! Tente novamente.");
                         break;
                 }
             }

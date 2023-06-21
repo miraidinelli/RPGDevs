@@ -18,8 +18,7 @@ namespace RPGDev
         {
             int ataque = 0;
             int defesa = 0;
-            int hp = defesa * 2;
-            int atributo = ataque;
+            
 
             Console.WriteLine("Digite o Nome");
             string nome = Console.ReadLine();
@@ -41,9 +40,17 @@ namespace RPGDev
                     break;
              
             }
+            int hp = defesa * 2;
+            int atributo = ataque;
+
+
             return this;
         }
-
+        // Sobrescrevendo o ToString 
+        public override string ToString()
+        {
+            return $"Nome: {Nome}, Hp: {HP}, Ataque{Ataque}, Defesa{Defesa}";
+        }
     }
 
     public class Guerreiro : Personagem
