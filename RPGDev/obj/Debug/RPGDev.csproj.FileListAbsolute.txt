@@ -14,3 +14,11 @@ G:\GitClones\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.SuggestedBindingRedirects.ca
 G:\GitClones\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
 G:\GitClones\RPGDevs\RPGDev\obj\Debug\RPGDev.exe
 G:\GitClones\RPGDevs\RPGDev\obj\Debug\RPGDev.pdb
+G:\GitClones\FOrk\RPGDevs\RPGDev\bin\Debug\RPGDev.exe.config
+G:\GitClones\FOrk\RPGDevs\RPGDev\bin\Debug\RPGDev.exe
+G:\GitClones\FOrk\RPGDevs\RPGDev\bin\Debug\RPGDev.pdb
+G:\GitClones\FOrk\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.AssemblyReference.cache
+G:\GitClones\FOrk\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.SuggestedBindingRedirects.cache
+G:\GitClones\FOrk\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
+G:\GitClones\FOrk\RPGDevs\RPGDev\obj\Debug\RPGDev.exe
+G:\GitClones\FOrk\RPGDevs\RPGDev\obj\Debug\RPGDev.pdb
