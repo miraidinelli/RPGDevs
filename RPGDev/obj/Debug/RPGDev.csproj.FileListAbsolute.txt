@@ -1,0 +1,8 @@
+C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPGDev\RPGDev\obj\Debug\RPGDev.csproj.AssemblyReference.cache
+C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPGDev\RPGDev\obj\Debug\RPGDev.csproj.SuggestedBindingRedirects.cache
+C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPGDev\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
+C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPGDev\RPGDev\bin\Debug\RPGDev.exe.config
+C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPGDev\RPGDev\bin\Debug\RPGDev.exe
+C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPGDev\RPGDev\bin\Debug\RPGDev.pdb
+C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPGDev\RPGDev\obj\Debug\RPGDev.exe
+C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPGDev\RPGDev\obj\Debug\RPGDev.pdb
