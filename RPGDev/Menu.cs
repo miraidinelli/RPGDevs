@@ -20,8 +20,7 @@ namespace RPGDev
                 Console.WriteLine("\nCriação de Personagem");
                 Console.WriteLine("Digite uma Opção para Começar");
                 Console.WriteLine("1 - Criar Personagem");
-                Console.WriteLine("2 - Mostrar Personagem");
-                Console.WriteLine("3 - Sair");
+                Console.WriteLine("2 - Sair");
                 string opcao = Console.ReadLine();
 
                 switch (opcao)
@@ -47,16 +46,8 @@ namespace RPGDev
                         }
                         return 0;
                     case "2":
-                        Console.WriteLine("\nSeu Personagem: ");
-                        foreach (Personagem personagem in listaPersonagens)
-                        {
-
-                            Console.WriteLine(personagem.ToString());
-                        }
-                        return 0;
-                    case "3":
                         flag = true;
-                        return 0;
+                        return 2;
                     default:
                         Console.WriteLine("\nOpção inválida! Tente novamente.");
                         return 0;

@@ -28,23 +28,9 @@ namespace RPGDev
                 P1 = new Player( nome, "GUERREIRO",tipo);
 
             }
-            else if(menuOpcao == 2)
+            else if (menuOpcao == 2)
             {
-                Console.WriteLine("Digite o Nome");
-                string nome = Console.ReadLine();
-                Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
-                string tipo = Console.ReadLine();
-                P1 = new Player(nome, "MAGE", tipo);
-
-            }
-            else if (menuOpcao == 3)
-            {
-                Console.WriteLine("Digite o Nome");
-                string nome = Console.ReadLine();
-                Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
-                string tipo = Console.ReadLine();
-                P1 = new Player(nome, "RANGE", tipo);
-
+                Environment.Exit(0);
             }
             Mp1 = new Mapa();
             P1.Localização = Mp1.entrada;
