@@ -21,16 +21,18 @@ namespace RPGDev
             int menuOpcao = menu.MenuInicial();
             if (menuOpcao == 1)
             {
-                Console.WriteLine("Digite o Nome");
-                string nome = Console.ReadLine();
-                Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
-                string tipo = Console.ReadLine();
-                P1 = new Player( nome, "GUERREIRO",tipo);
-
+                VerificarTipo(menuOpcao);
+               
             }
             else if (menuOpcao == 2)
             {
-                Environment.Exit(0);
+                VerificarTipo(menuOpcao);
+
+            }
+            else if (menuOpcao == 3)
+            {
+                VerificarTipo(menuOpcao);
+
             }
             Mp1 = new Mapa();
             P1.Localização = Mp1.entrada;
@@ -38,6 +40,18 @@ namespace RPGDev
             Console.WriteLine(P1.Localização[0].ToString());
             OpcoesMap();
             Console.ReadKey();
+        }
+        public void VerificarTipo(int opcao)
+        {
+            Console.WriteLine("Digite o Nome");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
+            int tipo = int.Parse(Console.ReadLine());
+            if(tipo == "1") { P1 = new Player(nome, "GUERREIRO", tipo); }
+            else if (tipo == "2") { P1 = new Player(nome, "MAGO", tipo); }
+            else if (tipo == "3") { P1 = new Player(nome, "RANGE", tipo); }
+
+
         }
         public void OpcoesMap()
         {
@@ -98,7 +112,11 @@ namespace RPGDev
             if (ocupante == 1 || ocupante == 2 || ocupante == 3) {
                 Console.WriteLine("Voce encontrou um monstro");
                 Monstros criadormob = new Monstros();
-                Mob = criadormob.Mob01(Dificuldade);
+                
+                if (ocupante == 2) { Mob = criadormob.Mob02(Dificuldade); }
+                else if (ocupante == 3) { Mob = criadormob.Mob03(Dificuldade); }
+                else { Mob = criadormob.Mob01(Dificuldade); }
+
                 OpcoesCombat();
             }
         
