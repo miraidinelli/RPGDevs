@@ -19,8 +19,7 @@ namespace RPGDev
             IdMonstro = 1;
             Nome = "Ratao do esgoto";
             TipoMonstro = "COMUN";
-            MobExperiencia = 10;
-            
+            MobExperiencia = 10;            
             HP = (int)(30 * mult);
             Defesa = (int)(10 * mult);
             Ataque = (int)(1 * mult);
@@ -30,22 +29,24 @@ namespace RPGDev
         public Monstros Mob02(double mult)
         {
             IdMonstro = 1;
+            Nome = "Rato do PCC";
             TipoMonstro = "RARO";
             MobExperiencia = (int)(15 * mult);
             HP = (int)(15 * mult);
             Defesa = (int)(15 * mult);
-            Ataque = (int)(15 * mult);
+            Ataque = (int)(2 * mult);
             return this;
 
         }
         public Monstros Mob03(double mult)
         {
             IdMonstro = 1;
-            TipoMonstro = "CHEFE";
+            Nome = " Rato Chefe do porao";
+            TipoMonstro = "CHEFE ";
             MobExperiencia = (int)(20 * mult);
             HP = (int)(20 * mult);
             Defesa = (int)(20 * mult);
-            Ataque = (int)(20 * mult);
+            Ataque = (int)(3 * mult);
             return this;
 
         }

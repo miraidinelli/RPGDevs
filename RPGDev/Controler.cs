@@ -21,35 +21,20 @@ namespace RPGDev
             int opcao = menu.MenuInicial();
             if (opcao == 1)
             {
-                Console.WriteLine("Digite o Nome");
-                string nome = Console.ReadLine();
-                Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
-                string tipo = Console.ReadLine();
-                P1 = new Player( nome, "GUERREIRO",tipo);
-
+                AtulizarTipo(opcao);
             }
             else if(opcao == 2)
             {
-                Console.WriteLine("Digite o Nome");
-                string nome = Console.ReadLine();
-                Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
-                string tipo = Console.ReadLine();
-                P1 = new Player(nome, "MAGE", tipo);
-
+                AtulizarTipo(opcao);
             }
             else if (opcao == 3)
             {
-                Console.WriteLine("Digite o Nome");
-                string nome = Console.ReadLine();
-                Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
-                string tipo = Console.ReadLine();
-                P1 = new Player(nome, "RANGE", tipo);
-
+              AtulizarTipo(opcao);
             }
             Mp1 = new Mapa();
             P1.Localização = Mp1.entrada;
-            Console.WriteLine(P1.Nome);
-            Console.WriteLine(P1.Localização[0].ToString());
+            Console.Clear();
+            Console.WriteLine("*** Voce esta entrando no labirinto *** ");
             OpcoesMap();
             Console.ReadKey();
         }
@@ -82,7 +67,7 @@ namespace RPGDev
 
 
         }
-
+        
         private void MostrarStatus()
         {
             Console.WriteLine($"Status do jogador");
@@ -96,7 +81,32 @@ namespace RPGDev
             Console.Clear();
 
         }
+        public void AtulizarTipo(int opcao) {
+            Console.WriteLine("Digite o Nome");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
+            string tipo = Console.ReadLine();
+            if(opcao == 1) { P1 = new Player(nome, "GUERRERO", tipo); }
+            else if(opcao == 2) { P1 = new Player(nome, "MAGO", tipo); }
+            else { P1 = new Player(nome, "RANGE", tipo); }
+            
+        }
+        public void ChecarNivel()
+        {
+            int nv = P1.Nivel;
+            for (int i = 0; i < P1.expNivel.Length  ; i++)
+            {
+                if(P1.Experiencia < P1.expNivel[i])
+                {
+                    P1.Nivel = i;
+                }
+            }
+            if( nv < P1.Nivel)
+            {
+                Console.WriteLine($"Parabens voce subiu para o level {P1.Nivel}!");
+            }
 
+        }
         private void ChecarMapa()
         {
             int ocupante = Mp1.formatoMapa[P1.Localização[0], P1.Localização[1]];
@@ -111,8 +121,21 @@ namespace RPGDev
             }
             if (ocupante == 1 || ocupante == 2 || ocupante == 3) {
                 Console.WriteLine("Voce encontrou um monstro");
+
                 Monstros criadormob = new Monstros();
-                Mob = criadormob.Mob01(Dificuldade);
+                if (ocupante == 1)
+                {
+                    Mob = criadormob.Mob01(Dificuldade);
+                }
+                else if (ocupante == 2)
+                {
+                    Mob = criadormob.Mob02(Dificuldade);
+                }
+                else if (ocupante == 3)
+                {
+                    Mob = criadormob.Mob03(Dificuldade);
+                    
+                }
                 OpcoesCombat();
             }
         
@@ -123,7 +146,11 @@ namespace RPGDev
             Combate cbt = new Combate();
             if(cbt.RealizarCombat(P1, Mob))
             {   P1.Experiencia += Mob.MobExperiencia;
-                Dificuldade += 0.01;
+
+                ChecarNivel();
+                Dificuldade += 0.1;
+                Mp1.formatoMapa[P1.Localização[0], P1.Localização[1]] = 0;
+
                 Console.WriteLine($"voce ganhou {Mob.MobExperiencia}");
                 Console.WriteLine($"precione qualquer tecla para continuar a aventura");
                 Console.ReadKey();

@@ -22,3 +22,11 @@ G:\GitClones\FOrk\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.SuggestedBindingRedirec
 G:\GitClones\FOrk\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
 G:\GitClones\FOrk\RPGDevs\RPGDev\obj\Debug\RPGDev.exe
 G:\GitClones\FOrk\RPGDevs\RPGDev\obj\Debug\RPGDev.pdb
+C:\Users\gpalmarante\source\repos\newapp\gpalmarante\RPGDevs\RPGDev\bin\Debug\RPGDev.exe.config
+C:\Users\gpalmarante\source\repos\newapp\gpalmarante\RPGDevs\RPGDev\bin\Debug\RPGDev.exe
+C:\Users\gpalmarante\source\repos\newapp\gpalmarante\RPGDevs\RPGDev\bin\Debug\RPGDev.pdb
+C:\Users\gpalmarante\source\repos\newapp\gpalmarante\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.AssemblyReference.cache
+C:\Users\gpalmarante\source\repos\newapp\gpalmarante\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.SuggestedBindingRedirects.cache
+C:\Users\gpalmarante\source\repos\newapp\gpalmarante\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
+C:\Users\gpalmarante\source\repos\newapp\gpalmarante\RPGDevs\RPGDev\obj\Debug\RPGDev.exe
+C:\Users\gpalmarante\source\repos\newapp\gpalmarante\RPGDevs\RPGDev\obj\Debug\RPGDev.pdb
