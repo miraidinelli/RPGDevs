@@ -54,11 +54,11 @@ namespace RPGDev
         }
         public void OpcoesMap()
         {
-            Console.WriteLine("Voce pode andar em 4 direcoes");
+            Console.WriteLine("Voce pode andar em 4 direçôes");
             Console.WriteLine("digite 1 para ir para o Norte");
-            Console.WriteLine("digite 2 para ir para o SUL");
+            Console.WriteLine("digite 2 para ir para o Sul");
             Console.WriteLine("digite 3 para ir para o Leste");
-            Console.WriteLine("digite 4 para ir para o Oest");
+            Console.WriteLine("digite 4 para ir para o Oeste");
             Console.WriteLine("Digite 5 para ver status");
             int opcao = int.Parse(Console.ReadLine());
             if (ChecarCaminho(opcao)&& opcao!=5)
@@ -72,8 +72,8 @@ namespace RPGDev
                 OpcoesMap();
             }
             else {
-                Console.WriteLine("Nao caminho disponivel para este lado");
-                Console.WriteLine("presione qualquer tecla para continuar");
+                Console.WriteLine("Nenhum caminho disponivel para este lado");
+                Console.WriteLine("Pressione qualquer tecla para continuar");
                 Console.ReadKey();
                 Console.Clear();
                 OpcoesMap();
@@ -105,7 +105,7 @@ namespace RPGDev
             }
             if (ocupante == 4) { Console.WriteLine("Voce achou a saida");
                 Console.WriteLine($"Voce terminou  com {P1.Experiencia} de experiencia");
-                Console.WriteLine("precione qualquer tecla pra fechar");
+                Console.WriteLine("Pressione Qualquer Tecla pra Fechar");
                 Console.ReadKey();
             }
             if (ocupante == 1 || ocupante == 2 || ocupante == 3) {
@@ -118,20 +118,20 @@ namespace RPGDev
         }
         public void OpcoesCombat()
         {
-            Console.WriteLine($"Voce entrou em combat com o{Mob.Nome} ");
+            Console.WriteLine($"Voce entrou em combate com o{Mob.Nome} ");
             Combate cbt = new Combate();
             if(cbt.RealizarCombat(P1, Mob))
             {   P1.Experiencia += Mob.MobExperiencia;
                 Dificuldade += 0.01;
                 Console.WriteLine($"voce ganhou {Mob.MobExperiencia}");
-                Console.WriteLine($"precione qualquer tecla para continuar a aventura");
+                Console.WriteLine($"pressione qualquer tecla para continuar sua aventura");
                 Console.ReadKey();
                 Console.Clear();
                 OpcoesMap();
 
             }
-            else { Console.WriteLine(" Voce Faleceu! ");
-                Console.WriteLine("qualquer tecla para encerrar");
+            else { Console.WriteLine(" Você Faleceu! ");
+                Console.WriteLine("Pressione qualquer tecla para encerrar");
                 Environment.Exit(0);
             }
 

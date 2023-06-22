@@ -28,22 +28,21 @@ namespace RPGDev
                 {
                     case "1":
                         Console.WriteLine("\nDigite a Clase do seu Personagem:");
-                        Console.WriteLine("Digite o Númeo Desejado");
+                        Console.WriteLine("Digite o Número Desejado");
                         Console.WriteLine("1 - Guerreiro");
                         Console.WriteLine("2 - Mago");
                         Console.WriteLine("3 - Ranger");
-                        int classe = int.Parse(Console.ReadLine());
+                        string classe = Console.ReadLine();
                         switch (classe)
                         {
-                            case 1:
-
+                            case "1":
+                                flag = true;
                                 return 1;
-                                
-                            case 2:
-
+                            case "2":
+                                flag = true;
                                 return 2;
-                            case 3:
-
+                            case "3":
+                                flag = true;
                                 return 3;
                         }
                         return 0;

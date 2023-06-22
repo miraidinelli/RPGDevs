@@ -17,16 +17,16 @@ namespace RPGDev
 
         public Mapa()
         {
-            Console.WriteLine("criando mapa");
+            Console.WriteLine("Gerando Mapa");
             formatoMapa = new int[alturaM, larguraM];
             mobSpaw = new int[] { 0 ,1, 2, 3 };
             MontarMapa();
-            Console.WriteLine("mapa criado");
+            Console.WriteLine("Mapa Gerado");
         }
 
         public void MontarMapa()
         {
-            Console.WriteLine("criando mapa 02");
+            Console.WriteLine("Gerando um Novo Mapa");
             Random rdn = new Random();
             for (int i = 0; i < alturaM; i++)
             {
@@ -46,7 +46,7 @@ namespace RPGDev
             int ySaida = rdn.Next(0, 10);
             formatoMapa[xSaida, ySaida] = 4;
             saida = new int[] { xSaida, ySaida };
-            Console.WriteLine("mapa criado 03");
+            Console.WriteLine("Mapa Gerado");
         }
     }
 }

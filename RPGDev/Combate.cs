@@ -23,7 +23,7 @@ namespace RPGDev
         {
             p1 = player;
             mob1 = mob;
-            Console.WriteLine("Voce entrou em combat!");
+            Console.WriteLine("Você entrou em combate!");
             Console.WriteLine("");
             while (!IsDead(p1) && !IsDead(mob1))
             {
@@ -33,9 +33,9 @@ namespace RPGDev
                 int opcao = int.Parse(Console.ReadLine());
                 if (opcao == 1)
                 {
-                    Console.WriteLine("Voce realiza um ataque!");
+                    Console.WriteLine("Você realiza um ataque!");
                     Atacar();
-                    Console.WriteLine("Monstro realiza um ataque!");
+                    Console.WriteLine("{0} realiza um ataque!", mob1.Nome);
                     MobAtaca();
 
 
@@ -61,7 +61,7 @@ namespace RPGDev
         public void Atacar()
         {
             mob1.HP = mob1.HP - p1.Ataque ;
-            Console.WriteLine($"seu ataque causou {p1.Ataque} de dano");
+            Console.WriteLine($"O Seu ataque causou {p1.Ataque} de dano");
 
         }
         public void Defender()
