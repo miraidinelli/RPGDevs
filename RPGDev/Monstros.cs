@@ -17,12 +17,13 @@ namespace RPGDev
         public Monstros Mob01(double mult)
         {
             IdMonstro = 1;
+            Nome = "Ratao do esgoto";
             TipoMonstro = "COMUN";
             MobExperiencia = 10;
             
-            HP = (int)(10 * mult);
+            HP = (int)(30 * mult);
             Defesa = (int)(10 * mult);
-            Ataque = (int)(10 * mult);
+            Ataque = (int)(1 * mult);
             return this;
 
         }
