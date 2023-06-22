@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGDev
 {
-    public abstract class Habilidade
+    public class Habilidade
     {
         // Nome da habilidade
         public string NomeHabilidade { get; set; }
@@ -15,18 +15,12 @@ namespace RPGDev
         // O dano causado pela habilidade
         public int DanoBaseHabilidade { get; set; }
 
-        public Habilidade(string nomeHabilidade, string tipoHabilidade, int danoBaseHabilidade)
+        public Habilidade
+        (string nomeHabilidade, string tipoHabilidade, int danoBaseHabilidade)
         {
             NomeHabilidade = nomeHabilidade;
             TipoHabilidade = tipoHabilidade;
             DanoBaseHabilidade = danoBaseHabilidade;
         }
-
-
-
-        // Adicionar este método na classe Personagem,
-        // sobrescrever verificandoas vantagens e fraquezas do personagem e
-        // do alvo com base no tipo da habilidade utilizada.
-        public abstract int CalcularDano();
     }
 }
