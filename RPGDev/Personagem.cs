@@ -13,6 +13,7 @@ namespace RPGDev
         public int Ataque { get; set; }
         public int Defesa { get; set; }
         public string Classe { get; set; }
+        
         public Habilidade Habilidade { get; set; }
 
         public Personagem ConstruirPersonagem()
@@ -61,7 +62,7 @@ namespace RPGDev
             return $"Nome: {Nome}, Hp: {HP}, Ataque: {Ataque}, Defesa: {Defesa}, Tipo: {Classe}";
         }
     }
-
+   
     public class Guerreiro : Personagem
     {
         public int Forca { get; set; }
