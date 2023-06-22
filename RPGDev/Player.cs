@@ -15,6 +15,7 @@ namespace RPGDev
         public string ClasseLuta { get; set; }
         public string Especializacao { get; set; }
         public int[] expNivel { get; set; }
+        public List<>
         public Player()
         {
            

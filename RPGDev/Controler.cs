@@ -47,9 +47,9 @@ namespace RPGDev
             string nome = Console.ReadLine();
             Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
             int tipo = int.Parse(Console.ReadLine());
-            if(tipo == "1") { P1 = new Player(nome, "GUERREIRO", tipo); }
-            else if (tipo == "2") { P1 = new Player(nome, "MAGO", tipo); }
-            else if (tipo == "3") { P1 = new Player(nome, "RANGE", tipo); }
+            if(tipo == 1) { P1 = new Player(nome, "GUERREIRO", tipo); }
+            else if (tipo == 2) { P1 = new Player(nome, "MAGO", tipo); }
+            else if (tipo == 3) { P1 = new Player(nome, "RANGE", tipo); }
 
 
         }
@@ -127,7 +127,7 @@ namespace RPGDev
             Combate cbt = new Combate();
             if(cbt.RealizarCombat(P1, Mob))
             {   P1.Experiencia += Mob.MobExperiencia;
-                Dificuldade += 0.01;
+                Dificuldade += 0.1;
                 Console.WriteLine($"voce ganhou {Mob.MobExperiencia}");
                 Console.WriteLine($"pressione qualquer tecla para continuar sua aventura");
                 Console.ReadKey();
