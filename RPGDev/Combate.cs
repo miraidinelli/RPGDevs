@@ -23,8 +23,9 @@ namespace RPGDev
             p1 = player;
             mob1 = mob;
             Console.WriteLine("Voce entrou em combat!");
+            Console.WriteLine("");
             while (isDead(p1) && isDead(mob1))
-                
+            Console.WriteLine("");
             Console.WriteLine("digite 1 para ir para o Atacar");
             Console.WriteLine("digite 2 para ir para o Defender");
             int opcao = int.Parse(Console.ReadLine());
@@ -71,8 +72,11 @@ namespace RPGDev
         }
         public bool isDead(Personagem p1)
             {
-            if (p1.HP <= 0) { Console.WriteLine($"{p1.Nome} Morreu");return true; }
-            else { return false; }
+            if (p1.HP <= 0) { 
+                Console.WriteLine($"{p1.Nome} Morreu");
+                return true; 
+            }
+             return false; 
             }
 
 

@@ -102,7 +102,8 @@ namespace RPGDev
             Console.WriteLine($"Voce entrou em combat com o{Mob.Nome} ");
             Combate cbt = new Combate();
             if(cbt.RealizarCombat(P1, Mob))
-            { P1.Experiencia += Mob.MobExperiencia;
+            {   P1.Experiencia += Mob.MobExperiencia;
+                Dificuldade += 0.01;
                 Console.WriteLine($"voce ganhou {Mob.MobExperiencia}");
                 Console.WriteLine($"precione qualquer tecla para continuar a aventura");
                 Console.ReadKey();
@@ -122,10 +123,10 @@ namespace RPGDev
 
         public bool ChecarCaminho(int opcao)
         {
-            if(opcao == 4 && P1.Localização[0] <= 0) { return false; }
-            if (opcao == 1 && P1.Localização[1] <= 0) { return false; }
-            if (opcao == 3 && P1.Localização[0] >= 10) { return false; }
-            if (opcao == 2 && P1.Localização[1] >= 10) { return false; }
+            if(opcao == 1 && P1.Localização[1] >= 9) { return false; }
+            if (opcao == 2 && P1.Localização[1] <= 1) { return false; }
+            if (opcao == 3 && P1.Localização[0] >= 9) { return false; }
+            if (opcao == 4 && P1.Localização[0] <= 1) { return false; }
             return true;
         }
         public void Movimentar(int opcao)

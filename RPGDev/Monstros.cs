@@ -21,7 +21,7 @@ namespace RPGDev
             TipoMonstro = "COMUN";
             MobExperiencia = 10;
             
-            HP = (int)(10 * mult);
+            HP = (int)(30 * mult);
             Defesa = (int)(10 * mult);
             Ataque = (int)(10 * mult);
             return this;
