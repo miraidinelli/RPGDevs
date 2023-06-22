@@ -54,7 +54,6 @@ namespace RPGDev
         }
         public void OpcoesMap()
         {
-            Console.WriteLine("Voce entrou no labirinto");
             Console.WriteLine("Voce pode andar em 4 direcoes");
             Console.WriteLine("digite 1 para ir para o Norte");
             Console.WriteLine("digite 2 para ir para o SUL");
@@ -69,6 +68,9 @@ namespace RPGDev
             }
             else {
                 Console.WriteLine("Nao caminho disponivel para este lado");
+                Console.WriteLine("presione qualquer tecla para continuar");
+                Console.ReadKey();
+                Console.Clear();
                 OpcoesMap();
             };
 
@@ -82,7 +84,11 @@ namespace RPGDev
                 Console.WriteLine("Nao tem ninguem por perto");
                 OpcoesMap(); 
             }
-            if (ocupante == 4) { Console.WriteLine("Voce achou a saida"); }
+            if (ocupante == 4) { Console.WriteLine("Voce achou a saida");
+                Console.WriteLine($"Voce terminou  com {P1.Experiencia} de experiencia");
+                Console.WriteLine("precione qualquer tecla pra fechar");
+                Console.ReadKey();
+            }
             if (ocupante == 1 || ocupante == 2 || ocupante == 3) {
                 Console.WriteLine("Voce encontrou um monstro");
                 Monstros criadormob = new Monstros();
@@ -94,6 +100,21 @@ namespace RPGDev
         public void OpcoesCombat()
         {
             Console.WriteLine($"Voce entrou em combat com o{Mob.Nome} ");
+            Combate cbt = new Combate();
+            if(cbt.RealizarCombat(P1, Mob))
+            { P1.Experiencia += Mob.MobExperiencia;
+                Console.WriteLine($"voce ganhou {Mob.MobExperiencia}");
+                Console.WriteLine($"precione qualquer tecla para continuar a aventura");
+                Console.ReadKey();
+                Console.Clear();
+                OpcoesMap();
+
+            }
+            else { Console.WriteLine(" Voce Faleceu! ");
+                Console.WriteLine("qualquer tecla para encerrar");
+                Environment.Exit(0);
+            }
+
             Console.ReadKey();
 
 
