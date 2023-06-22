@@ -15,7 +15,7 @@ namespace RPGDev
         public string ClasseLuta { get; set; }
         public string Especializacao { get; set; }
         public int[] expNivel { get; set; }
-        public List<>
+        public List<Itens> itens { get; set; }
         public Player()
         {
            
@@ -32,6 +32,8 @@ namespace RPGDev
             Defesa = 10;
             HP = 10;
             expNivel = new int[] { 30, 60, 90, 150, 200 };
+            itens = new List<Itens>();
+            
             if(espec == 1) {
                 Ataque += 7; }
             else if (espec == 2)
