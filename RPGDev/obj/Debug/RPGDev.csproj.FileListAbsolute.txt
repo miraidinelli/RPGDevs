@@ -30,3 +30,11 @@ C:\Users\gpalmarante\Source\Repos\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.Suggest
 C:\Users\gpalmarante\Source\Repos\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
 C:\Users\gpalmarante\Source\Repos\RPGDevs\RPGDev\obj\Debug\RPGDev.exe
 C:\Users\gpalmarante\Source\Repos\RPGDevs\RPGDev\obj\Debug\RPGDev.pdb
+G:\GitClones\BranchGeisson\RPGDevs\RPGDev\bin\Debug\RPGDev.exe.config
+G:\GitClones\BranchGeisson\RPGDevs\RPGDev\bin\Debug\RPGDev.exe
+G:\GitClones\BranchGeisson\RPGDevs\RPGDev\bin\Debug\RPGDev.pdb
+G:\GitClones\BranchGeisson\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.AssemblyReference.cache
+G:\GitClones\BranchGeisson\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.SuggestedBindingRedirects.cache
+G:\GitClones\BranchGeisson\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
+G:\GitClones\BranchGeisson\RPGDevs\RPGDev\obj\Debug\RPGDev.exe
+G:\GitClones\BranchGeisson\RPGDevs\RPGDev\obj\Debug\RPGDev.pdb
