@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography.X509Certificates;
@@ -24,33 +25,37 @@ namespace RPGDev
             mob1 = mob;
             Console.WriteLine("Voce entrou em combat!");
             Console.WriteLine("");
-            while (isDead(p1) && isDead(mob1))
-            Console.WriteLine("");
-            Console.WriteLine("digite 1 para ir para o Atacar");
-            Console.WriteLine("digite 2 para ir para o Defender");
-            int opcao = int.Parse(Console.ReadLine());
-            if (opcao == 1)
+            while (!IsDead(p1) && !IsDead(mob1))
             {
-                Console.WriteLine("Voce realiza um ataque!");
-                Atacar();
-                Console.WriteLine("Monstro realiza um ataque!");
-                MobAtaca();
-               
-                if (isDead(p1)) { return false; }
-                
-                
-                if (isDead(mob1)) { return true; }
-            }
+                Console.WriteLine("");
+                Console.WriteLine("digite 1 para ir para o Atacar");
+                Console.WriteLine("digite 2 para ir para o Defender");
+                int opcao = int.Parse(Console.ReadLine());
+                if (opcao == 1)
+                {
+                    Console.WriteLine("Voce realiza um ataque!");
+                    Atacar();
+                    Console.WriteLine("Monstro realiza um ataque!");
+                    MobAtaca();
+
+
+                }
                 if (opcao == 2)
                 {
-                if (isDead(p1)) { return false; }
-                if (isDead(mob1)) { return true; };
-            }
 
+                }
+            }
+            if (IsDead(p1)) { return false; }
+            if (IsDead(mob1)) { return true; };
             return true;
             }
         
+        public void Combat()
+        {
 
+
+
+        }
 
         
         public void Atacar()
@@ -70,7 +75,7 @@ namespace RPGDev
             Console.WriteLine($"{mob1.Nome} Atacou e causou {mob1.Ataque}");
 
         }
-        public bool isDead(Personagem p1)
+        public bool IsDead(Personagem p1)
             {
             if (p1.HP <= 0) { 
                 Console.WriteLine($"{p1.Nome} Morreu");

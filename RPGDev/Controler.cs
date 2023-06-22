@@ -16,7 +16,7 @@ namespace RPGDev
         public double Dificuldade {get; set;}
         public Controler()
         {
-            Dificuldade = 0.0;
+            Dificuldade = 1.0;
             menu = new Menu();
             if (menu.MenuInicial() == 1)
             {
@@ -59,12 +59,17 @@ namespace RPGDev
             Console.WriteLine("digite 2 para ir para o SUL");
             Console.WriteLine("digite 3 para ir para o Leste");
             Console.WriteLine("digite 4 para ir para o Oest");
+            Console.WriteLine("Digite 5 para ver status");
             int opcao = int.Parse(Console.ReadLine());
-            if (ChecarCaminho(opcao))
+            if (ChecarCaminho(opcao)&& opcao!=5)
             {
                 Movimentar(opcao);
                 ChecarMapa();
 
+            }else if(opcao == 5)
+            {
+                MostrarStatus();
+                OpcoesMap();
             }
             else {
                 Console.WriteLine("Nao caminho disponivel para este lado");
@@ -74,6 +79,20 @@ namespace RPGDev
                 OpcoesMap();
             };
 
+
+        }
+
+        private void MostrarStatus()
+        {
+            Console.WriteLine($"Status do jogador");
+            Console.WriteLine($"Nome - {P1.Nome}");
+            Console.WriteLine($"Vida - {P1.HP}");
+            Console.WriteLine($"Ataque - {P1.Ataque}");
+            Console.WriteLine($"Defesa - {P1.Defesa}");
+            Console.WriteLine($"Experiencia - {P1.Experiencia}");
+            Console.WriteLine($"Precione qualquer tecla para retorna ao mapa");
+            Console.ReadKey();
+            Console.Clear();
 
         }
 

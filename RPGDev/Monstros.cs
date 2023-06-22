@@ -23,7 +23,7 @@ namespace RPGDev
             
             HP = (int)(30 * mult);
             Defesa = (int)(10 * mult);
-            Ataque = (int)(10 * mult);
+            Ataque = (int)(1 * mult);
             return this;
 
         }
