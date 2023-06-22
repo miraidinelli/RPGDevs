@@ -18,7 +18,8 @@ namespace RPGDev
         {
             Dificuldade = 1.0;
             menu = new Menu();
-            if (menu.MenuInicial() == 1)
+            int menuOpcao = menu.MenuInicial();
+            if (menuOpcao == 1)
             {
                 Console.WriteLine("Digite o Nome");
                 string nome = Console.ReadLine();
@@ -27,7 +28,7 @@ namespace RPGDev
                 P1 = new Player( nome, "GUERREIRO",tipo);
 
             }
-            else if(menu.MenuInicial() == 2)
+            else if(menuOpcao == 2)
             {
                 Console.WriteLine("Digite o Nome");
                 string nome = Console.ReadLine();
@@ -36,7 +37,7 @@ namespace RPGDev
                 P1 = new Player(nome, "MAGE", tipo);
 
             }
-            else if (menu.MenuInicial() == 3)
+            else if (menuOpcao == 3)
             {
                 Console.WriteLine("Digite o Nome");
                 string nome = Console.ReadLine();
