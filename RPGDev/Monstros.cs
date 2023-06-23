@@ -42,7 +42,7 @@ namespace RPGDev
         public Monstros Mob03(double mult)
         {
             IdMonstro = 1;
-            Nome = "Lider Ratao";
+            Nome = "Lider Ratão";
             TipoMonstro = "CHEFE";
             MobExperiencia = (int)(20 * mult);
             HP = (int)(20 * mult);

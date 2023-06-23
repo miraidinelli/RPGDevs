@@ -35,7 +35,10 @@ namespace RPGDev
             }
             Mp1 = new Mapa();
             P1.Localização = Mp1.entrada;
-            
+
+            Console.WriteLine("Você entra em uma Masmorra Escura");
+            Console.WriteLine("Depois de andar um pouco, você olha pra trás e percebe que se perdeu");
+            Console.WriteLine("Agora perdido, você tem 4 opções");
             OpcoesMap();
             Console.ReadKey();
         }
@@ -53,11 +56,10 @@ namespace RPGDev
         }
         public void OpcoesMap()
         {
-            Console.WriteLine("Voce pode andar em 4 direçôes");
-            Console.WriteLine("digite 1 para ir para o Norte");
-            Console.WriteLine("digite 2 para ir para o Sul");
-            Console.WriteLine("digite 3 para ir para o Leste");
-            Console.WriteLine("digite 4 para ir para o Oeste");
+            Console.WriteLine("Digite 1 para ir para o Norte");
+            Console.WriteLine("Digite 2 para ir para o Sul");
+            Console.WriteLine("Digite 3 para ir para o Leste");
+            Console.WriteLine("Digite 4 para ir para o Oeste");
             Console.WriteLine("Digite 5 para ver status");
             Console.WriteLine("Digite 6 para ver Mochila");
             int opcao = int.Parse(Console.ReadLine());
@@ -97,7 +99,7 @@ namespace RPGDev
                 Console.WriteLine($"{cont} - {i.NomeItem}");
 
             }
-            Console.WriteLine("Digite o numero no item para utilizalo!");
+            Console.WriteLine("Digite o numero no item para utiliza-lo!");
             Console.WriteLine("Digite 0 para retorna a aventura!");
             int opcao = int.Parse(Console.ReadLine());
             if(opcao == 0) { OpcoesMap(); }
@@ -115,10 +117,10 @@ namespace RPGDev
                 P1.itens.RemoveAt(opcao);
                
             }else if (P1.itens[opcao].TipoItem == 2) { P1.Ataque += P1.itens[opcao].Ataque;
-                Console.WriteLine($"Voce Utilizou {P1.itens[opcao].NomeItem} e Almentou seu ataque em  {P1.itens[opcao].PoderItem} !");
+                Console.WriteLine($"Voce Utilizou {P1.itens[opcao].NomeItem} e Aumentou seu ataque em  {P1.itens[opcao].PoderItem} !");
                 P1.itens.RemoveAt(opcao);
             }else if (P1.itens[opcao].TipoItem == 3) { P1.Defesa += P1.itens[opcao].Defesa;
-                Console.WriteLine($"Voce Utilizou {P1.itens[opcao].NomeItem} almentou sua defesa em  {P1.itens[opcao].PoderItem} !");
+                Console.WriteLine($"Voce Utilizou {P1.itens[opcao].NomeItem} Aumentou sua defesa em  {P1.itens[opcao].PoderItem} !");
                 P1.itens.RemoveAt(opcao);
                 
             };
@@ -131,8 +133,8 @@ namespace RPGDev
             Console.WriteLine($"Vida - {P1.HP}");
             Console.WriteLine($"Ataque - {P1.Ataque}");
             Console.WriteLine($"Defesa - {P1.Defesa}");
-            Console.WriteLine($"Experiencia - {P1.Experiencia}");
-            Console.WriteLine($"Precione qualquer tecla para retorna ao mapa");
+            Console.WriteLine($"Experiência - {P1.Experiencia}");
+            Console.WriteLine($"Pressione qualquer tecla para retornar ao mapa");
             Console.ReadKey();
             Console.Clear();
 
@@ -142,16 +144,16 @@ namespace RPGDev
         {
             int ocupante = Mp1.formatoMapa[P1.Localização[0], P1.Localização[1]];
             if (ocupante == 0) { 
-                Console.WriteLine("Nao tem ninguem por perto");
+                Console.WriteLine("Não tem ninguem por perto");
                 OpcoesMap(); 
             }
-            if (ocupante == 4) { Console.WriteLine("Voce achou a saida");
-                Console.WriteLine($"Voce terminou  com {P1.Experiencia} de experiencia");
+            if (ocupante == 4) { Console.WriteLine("Voce achou a saída");
+                Console.WriteLine($"Você terminou  com {P1.Experiencia} de experiência");
                 Console.WriteLine("Pressione Qualquer Tecla pra Fechar");
                 Console.ReadKey();
             }
             if (ocupante == 1 || ocupante == 2 || ocupante == 3) {
-                Console.WriteLine("Voce encontrou um monstro");
+                Console.WriteLine("Você encontrou um monstro");
                 Monstros criadormob = new Monstros();
                 
                 if (ocupante == 2) { Mob = criadormob.Mob02(Dificuldade); }
@@ -164,14 +166,14 @@ namespace RPGDev
         }
         public void OpcoesCombat()
         {
-            Console.WriteLine($"Voce entrou em combate com o{Mob.Nome} ");
+            Console.WriteLine($"Você entrou em combate com o {Mob.Nome} ");
             Combate cbt = new Combate();
             if(cbt.RealizarCombat(P1, Mob))
             {   P1.Experiencia += Mob.MobExperiencia;
                 Dificuldade += 0.1;
-                Console.WriteLine($"voce ganhou {Mob.MobExperiencia}");
+                Console.WriteLine($"Você ganhou {Mob.MobExperiencia}");
                 ChanceLoot();
-                Console.WriteLine($"pressione qualquer tecla para continuar sua aventura");
+                Console.WriteLine($"Pressione qualquer tecla para continuar sua aventura");
                 Console.ReadKey();
                 Console.Clear();
                 OpcoesMap();
@@ -194,7 +196,7 @@ namespace RPGDev
             {
                 Itens item01 = new Itens().Loot();
                 
-                Console.WriteLine($"Parabens ! Voce Achai um {item01.NomeItem}");
+                Console.WriteLine($"Parabéns!!! Você Achou um {item01.NomeItem}");
                 P1.itens.Add(item01);
             }
             

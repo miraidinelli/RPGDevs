@@ -15,7 +15,7 @@ namespace RPGDev
        
         static void Main(string[] args)
         {
-            // MInha tentativa inicial de fazer um construtor de personagem
+            // Chamada do metoto controler
             Controler control = new Controler();
             
 

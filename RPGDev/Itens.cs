@@ -15,7 +15,8 @@ namespace RPGDev
         public int LocalItem { get; set; }
         public int Ataque { get; set; }
         public int Defesa { get; set; }
-        // Itens 1 = pocoes 2 = armas 3 = escudos
+        
+        // Itens 1 = poções 2 = armas 3 = escudos
         public Itens()
         {
             
