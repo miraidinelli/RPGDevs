@@ -198,6 +198,7 @@ namespace RPGDev
             {
                 Console.WriteLine(" Você Faleceu! ");
                 Console.WriteLine("Pressione qualquer tecla para encerrar");
+                Console.ReadKey();
                 Environment.Exit(0);
             }
             Console.ReadKey();
