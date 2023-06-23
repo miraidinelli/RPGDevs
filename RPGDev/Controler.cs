@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace RPGDev
         public Player P1 { get; set; }
         public Monstros Mob { get; set; }
         public Mapa Mp1 { get; set; }
+        public Itens item { get; set; }
 
         public Menu menu;
         public double Dificuldade {get; set;}
@@ -21,23 +23,33 @@ namespace RPGDev
             int menuOpcao = menu.MenuInicial();
             if (menuOpcao == 1)
             {
-                Console.WriteLine("Digite o Nome");
-                string nome = Console.ReadLine();
-                Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
-                string tipo = Console.ReadLine();
-                P1 = new Player( nome, "GUERREIRO",tipo);
-
+                VerificarTipo(menuOpcao);
             }
             else if (menuOpcao == 2)
             {
-                Environment.Exit(0);
+                VerificarTipo(menuOpcao);
+            }
+            else if (menuOpcao == 3)
+            {
+                VerificarTipo(menuOpcao);
             }
             Mp1 = new Mapa();
             P1.Localização = Mp1.entrada;
-            Console.WriteLine(P1.Nome);
-            Console.WriteLine(P1.Localização[0].ToString());
+            
             OpcoesMap();
             Console.ReadKey();
+        }
+        public void VerificarTipo(int opcao)
+        {
+            Console.WriteLine("Digite o Nome");
+            string nome = Console.ReadLine();
+            Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
+            int tipo = int.Parse(Console.ReadLine());
+            if(tipo == 1) { P1 = new Player(nome, "GUERREIRO", tipo); }
+            else if (tipo == 2) { P1 = new Player(nome, "MAGO", tipo); }
+            else if (tipo == 3) { P1 = new Player(nome, "RANGE", tipo); }
+
+
         }
         public void OpcoesMap()
         {
@@ -47,8 +59,9 @@ namespace RPGDev
             Console.WriteLine("digite 3 para ir para o Leste");
             Console.WriteLine("digite 4 para ir para o Oeste");
             Console.WriteLine("Digite 5 para ver status");
+            Console.WriteLine("Digite 6 para ver Mochila");
             int opcao = int.Parse(Console.ReadLine());
-            if (ChecarCaminho(opcao)&& opcao!=5)
+            if (ChecarCaminho(opcao)&& opcao <5)
             {
                 Movimentar(opcao);
                 ChecarMapa();
@@ -56,6 +69,11 @@ namespace RPGDev
             }else if(opcao == 5)
             {
                 MostrarStatus();
+                OpcoesMap();
+            }
+            else if (opcao == 6)
+            {
+                MostrarMochila();
                 OpcoesMap();
             }
             else {
@@ -67,6 +85,43 @@ namespace RPGDev
             };
 
 
+        }
+
+        private void MostrarMochila()
+        {
+            Console.WriteLine($"Mochila do jogador");
+            Console.WriteLine($"Mochila Contem {P1.itens.Count}");
+            int cont = 1;
+            foreach ( Itens i in P1.itens)
+            {
+                Console.WriteLine($"{cont} - {i.NomeItem}");
+
+            }
+            Console.WriteLine("Digite o numero no item para utilizalo!");
+            Console.WriteLine("Digite 0 para retorna a aventura!");
+            int opcao = int.Parse(Console.ReadLine());
+            if(opcao == 0) { OpcoesMap(); }
+            else if(opcao != 0) { UtilizarItem(opcao-1); }
+            Console.WriteLine("Digite qualquer tecla para retorna ao mapa");
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        private void UtilizarItem(int opcao)
+        {
+
+            if(P1.itens[opcao].TipoItem == 1) { P1.HP += P1.itens[opcao].PoderItem;
+                Console.WriteLine($"Voce Utilizou {P1.itens[opcao].NomeItem} e recuperou {P1.itens[opcao].PoderItem} de vida!");
+                P1.itens.RemoveAt(opcao);
+               
+            }else if (P1.itens[opcao].TipoItem == 2) { P1.Ataque += P1.itens[opcao].Ataque;
+                Console.WriteLine($"Voce Utilizou {P1.itens[opcao].NomeItem} e Almentou seu ataque em  {P1.itens[opcao].PoderItem} !");
+                P1.itens.RemoveAt(opcao);
+            }else if (P1.itens[opcao].TipoItem == 3) { P1.Defesa += P1.itens[opcao].Defesa;
+                Console.WriteLine($"Voce Utilizou {P1.itens[opcao].NomeItem} almentou sua defesa em  {P1.itens[opcao].PoderItem} !");
+                P1.itens.RemoveAt(opcao);
+                
+            };
         }
 
         private void MostrarStatus()
@@ -98,7 +153,11 @@ namespace RPGDev
             if (ocupante == 1 || ocupante == 2 || ocupante == 3) {
                 Console.WriteLine("Voce encontrou um monstro");
                 Monstros criadormob = new Monstros();
-                Mob = criadormob.Mob01(Dificuldade);
+                
+                if (ocupante == 2) { Mob = criadormob.Mob02(Dificuldade); }
+                else if (ocupante == 3) { Mob = criadormob.Mob03(Dificuldade); }
+                else { Mob = criadormob.Mob01(Dificuldade); }
+
                 OpcoesCombat();
             }
         
@@ -109,8 +168,9 @@ namespace RPGDev
             Combate cbt = new Combate();
             if(cbt.RealizarCombat(P1, Mob))
             {   P1.Experiencia += Mob.MobExperiencia;
-                Dificuldade += 0.01;
+                Dificuldade += 0.1;
                 Console.WriteLine($"voce ganhou {Mob.MobExperiencia}");
+                ChanceLoot();
                 Console.WriteLine($"pressione qualquer tecla para continuar sua aventura");
                 Console.ReadKey();
                 Console.Clear();
@@ -125,6 +185,19 @@ namespace RPGDev
             Console.ReadKey();
 
 
+        }
+
+        private void ChanceLoot()
+        {
+            Random rdn = new Random();
+            if(rdn.Next(0,1)== 0)
+            {
+                Itens item01 = new Itens().Loot();
+                
+                Console.WriteLine($"Parabens ! Voce Achai um {item01.NomeItem}");
+                P1.itens.Add(item01);
+            }
+            
         }
 
         public bool ChecarCaminho(int opcao)

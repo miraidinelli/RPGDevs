@@ -12,11 +12,7 @@ namespace RPGDev
 
         public int  MenuInicial()
         {
-            bool flag = false;
-            List<Personagem> listaPersonagens = new List<Personagem>();
-
-            while (!flag)
-            {
+            
                 Console.WriteLine("\nCriação de Personagem");
                 Console.WriteLine("Digite uma Opção para Começar");
                 Console.WriteLine("1 - Criar Personagem");
@@ -31,31 +27,20 @@ namespace RPGDev
                         Console.WriteLine("1 - Guerreiro");
                         Console.WriteLine("2 - Mago");
                         Console.WriteLine("3 - Ranger");
-                        string classe = Console.ReadLine();
-                        switch (classe)
-                        {
-                            case "1":
-                                flag = true;
-                                return 1;
-                            case "2":
-                                flag = true;
-                                return 2;
-                            case "3":
-                                flag = true;
-                                return 3;
-                        }
-                        return 0;
+                        int classe = int.Parse(Console.ReadLine());
+
+                        return classe;
                     case "2":
-                        flag = true;
+                       
                         return 2;
                     default:
                         Console.WriteLine("\nOpção inválida! Tente novamente.");
                         return 0;
                 }
-                flag = true;
-                return 0;
+                
+                
             }
-            return 0;
+            
         }
     }
-}
+

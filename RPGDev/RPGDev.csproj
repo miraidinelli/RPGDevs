@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Combate.cs" />
     <Compile Include="Controler.cs" />
+    <Compile Include="Itens.cs" />
     <Compile Include="Mapa.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="Monstros.cs" />
