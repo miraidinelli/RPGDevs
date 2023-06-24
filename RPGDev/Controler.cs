@@ -270,8 +270,9 @@ namespace RPGDev
                 if (cbt.RealizarCombat(P1, Mob))
                 {
                     P1.Experiencia += Mob.MobExperiencia;
-
-                    Console.WriteLine($"Você ganhou {Mob.MobExperiencia}");
+                    P1.SetNivel();
+                    Console.WriteLine($"Você ganhou {Mob.MobExperiencia} de experiência");
+                    Console.WriteLine($"Você esta no nivel {P1.Nivel}");
                     ChanceLoot();
                     Console.WriteLine($"Pressione qualquer tecla para continuar sua aventura");
                     Console.ReadKey();
