@@ -14,11 +14,11 @@ namespace RPGDev
         public Monstros Mob { get; set; }
         public Mapa Mp1 { get; set; }
         public Itens Item { get; set; }
-        
+
 
         public Controler()
         {
-            
+
             menu = new Menu();
             int menuOpcao = menu.MenuInicial();
             if (menuOpcao == 1)
@@ -49,9 +49,9 @@ namespace RPGDev
             string nome = Console.ReadLine();
             Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
             int tipo = int.Parse(Console.ReadLine());
-            if (tipo == 1) { P1 = new Player(nome,"GUERREIRO",tipo); }
-            else if (tipo == 2) { P1 = new Player(nome,"MAGO",tipo); }
-            else if (tipo == 3) { P1 = new Player(nome,"RANGE",tipo); }
+            if (tipo == 1) { P1 = new Player(nome, "GUERREIRO", tipo); }
+            else if (tipo == 2) { P1 = new Player(nome, "MAGO", tipo); }
+            else if (tipo == 3) { P1 = new Player(nome, "RANGE", tipo); }
         }
 
         public void OpcoesMap()
@@ -100,14 +100,14 @@ namespace RPGDev
             {
                 Console.WriteLine($"{cont} - {i.NomeItem}");
             }
-            
+
             Console.WriteLine("Digite o numero no item para utiliza-lo!");
             Console.WriteLine("Digite 0 para retorna a aventura!");
-            
+
             int opcao = int.Parse(Console.ReadLine());
             if (opcao == 0) { OpcoesMap(); }
             else if (opcao != 0) { UtilizarItem(opcao - 1); }
-            
+
             Console.WriteLine("Digite qualquer tecla para retorna ao mapa");
             Console.ReadKey();
             Console.Clear();
@@ -150,13 +150,13 @@ namespace RPGDev
 
         private void ChecarMapa()
         {
-            int ocupante = Mp1.formatoMapa[P1.Localização[0],P1.Localização[1]];
+            int ocupante = Mp1.formatoMapa[P1.Localização[0], P1.Localização[1]];
             if (ocupante == 0)
             {
                 Console.WriteLine("Não tem ninguem por perto");
                 OpcoesMap();
             }
-            
+
             if (ocupante == 4)
             {
                 Console.WriteLine("Voce achou a saída");
@@ -164,7 +164,7 @@ namespace RPGDev
                 Console.WriteLine("Pressione Qualquer Tecla pra Fechar");
                 Console.ReadKey();
             }
-        
+
             if (ocupante == 1 || ocupante == 2 || ocupante == 3)
             {
                 Console.WriteLine("Você encontrou um monstro");
@@ -177,28 +177,36 @@ namespace RPGDev
                 OpcoesCombat();
             }
         }
-        
+
         public void OpcoesCombat()
         {
             Console.WriteLine($"Você entrou em combate com o {Mob.Nome} ");
             Combate cbt = new Combate();
-            if (cbt.RealizarCombat(P1,Mob))
+            Console.WriteLine("digite 1 para ir para Batalha");
+            Console.WriteLine("digite 2 para tentar Fugir");
+            int op = int.Parse(Console.ReadLine());
+            if (op == 2) TentarFugir();
+            if (op == 1)
             {
-                P1.Experiencia += Mob.MobExperiencia;
-               
-                Console.WriteLine($"Você ganhou {Mob.MobExperiencia}");
-                ChanceLoot();
-                Console.WriteLine($"Pressione qualquer tecla para continuar sua aventura");
-                Console.ReadKey();
-                Console.Clear();
-                OpcoesMap();
-            }
-            
-            else
-            {
-                Console.WriteLine(" Você Faleceu! ");
-                Console.WriteLine("Pressione qualquer tecla para encerrar");
-                Environment.Exit(0);
+                if (cbt.RealizarCombat(P1, Mob))
+                {
+                    P1.Experiencia += Mob.MobExperiencia;
+
+                    Console.WriteLine($"Você ganhou {Mob.MobExperiencia}");
+                    ChanceLoot();
+                    Console.WriteLine($"Pressione qualquer tecla para continuar sua aventura");
+                    Console.ReadKey();
+                    Console.Clear();
+                    OpcoesMap();
+                }
+
+                else
+                {
+                    Console.WriteLine(" Você Faleceu! ");
+                    Console.WriteLine("Pressione qualquer tecla para encerrar");
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                }
             }
             Console.ReadKey();
         }
@@ -206,7 +214,7 @@ namespace RPGDev
         private void ChanceLoot()
         {
             Random rdn = new Random();
-            if (rdn.Next(0,1) == 0)
+            if (rdn.Next(0, 1) == 0)
             {
                 Itens item01 = new Itens().Loot();
                 Console.WriteLine($"Parabéns!!! Você Achou um {item01.NomeItem}");
@@ -222,13 +230,51 @@ namespace RPGDev
             if (opcao == 4 && P1.Localização[0] <= 1) { return false; }
             return true;
         }
-     
+
         public void Movimentar(int opcao)
         {
             if (opcao == 1) { P1.Localização[1] = P1.Localização[1] + 1; return; }
             if (opcao == 2) { P1.Localização[1] = P1.Localização[1] - 1; return; }
             if (opcao == 3) { P1.Localização[0] = P1.Localização[0] + 1; return; }
             if (opcao == 4) { P1.Localização[0] = P1.Localização[0] - 1; return; }
+        }
+
+        public void TentarFugir()
+        {
+            Random random = new Random();
+            int i = random.Next(1, 3);
+            if (i == 1)
+            {
+                Console.WriteLine("Você conseguiu fugir do monstro! Retornou ao mapa.");
+                OpcoesMap();
+            }
+            if (i == 2)
+            {
+                Console.WriteLine("Você não conseguiu fugir. Termine a batalha.");
+                Console.WriteLine($"Você entrou em combate com o {Mob.Nome} ");
+                Combate cbt = new Combate();
+                if (cbt.RealizarCombat(P1, Mob))
+                {
+                    P1.Experiencia += Mob.MobExperiencia;
+
+                    Console.WriteLine($"Você ganhou {Mob.MobExperiencia}");
+                    ChanceLoot();
+                    Console.WriteLine($"Pressione qualquer tecla para continuar sua aventura");
+                    Console.ReadKey();
+                    Console.Clear();
+                    OpcoesMap();
+                }
+
+                else
+                {
+                    Console.WriteLine(" Você Faleceu! ");
+                    Console.WriteLine("Pressione qualquer tecla para encerrar");
+                    Console.ReadKey();
+                    Environment.Exit(0);
+                }
+
+            }
+
         }
     }
 }
