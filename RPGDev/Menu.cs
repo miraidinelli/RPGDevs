@@ -19,7 +19,7 @@ namespace RPGDev
             switch (opcao)
             {
                 case "1":
-                    Console.WriteLine("\nDigite a Clase do seu Personagem:");
+                    Console.WriteLine("\nEscolha a Clase do seu Personagem:");
                     Console.WriteLine("Digite o Número Desejado");
                     Console.WriteLine("1 - Guerreiro");
                     Console.WriteLine("2 - Mago");

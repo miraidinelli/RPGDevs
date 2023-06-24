@@ -20,7 +20,7 @@ namespace RPGDev
         {
            
         }
-        public Player(string nome,string clase, int espec)
+        public Player(string nome,string classe, int espec)
         {
             this.Nome = nome;
             this.ClasseLuta = Classe;
@@ -30,7 +30,7 @@ namespace RPGDev
             Localização = new int[] { 1, 1 };
             Ataque = 10;
             Defesa = 10;
-            HP = 10;
+            HP = 20;
             expNivel = new int[] { 30, 60, 90, 150, 200 };
             itens = new List<Itens>();
             
