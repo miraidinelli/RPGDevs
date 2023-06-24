@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RPGDev
@@ -21,7 +22,13 @@ namespace RPGDev
             formatoMapa = new int[alturaM,larguraM];
             mobSpaw = new int[] { 0,1,2,3 };
             MontarMapa();
-            Console.WriteLine("Mapa Gerado");
+            Console.Write(".");
+            Thread.Sleep(700);
+            Console.Write(".");
+            Thread.Sleep(700);
+            Console.Write(".");
+            Thread.Sleep(700);
+            Console.WriteLine("\nMapa Gerado");
         }
 
         public void MontarMapa()

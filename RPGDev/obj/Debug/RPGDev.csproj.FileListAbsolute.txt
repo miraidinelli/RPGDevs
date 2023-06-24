@@ -54,3 +54,11 @@ C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPG\RPGDev\obj\Debug\RPGDev.cs
 C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPG\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
 C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPG\RPGDev\obj\Debug\RPGDev.exe
 C:\Users\felnd\Downloads\DevProjcs\+Devs2Blu_Proj\RPG\RPGDev\obj\Debug\RPGDev.pdb
+C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\bin\Debug\RPGDev.exe.config
+C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\bin\Debug\RPGDev.exe
+C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\bin\Debug\RPGDev.pdb
+C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.AssemblyReference.cache
+C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.SuggestedBindingRedirects.cache
+C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
+C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\obj\Debug\RPGDev.exe
+C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\obj\Debug\RPGDev.pdb

@@ -23,13 +23,12 @@ namespace RPGDev
         {
             p1 = player;
             mob1 = mob;
-            Console.WriteLine("Você entrou em combate!");
             Console.WriteLine("");
             while (!IsDead(p1) && !IsDead(mob1))
             {
                 Console.WriteLine("");
-                Console.WriteLine("digite 1 para ir para Atacar");
-                Console.WriteLine("digite 2 para ir para Defender");
+                Console.WriteLine("digite 1 para Atacar");
+                Console.WriteLine("digite 2 para Defender");
                 int opcao = int.Parse(Console.ReadLine());
                 if (opcao == 1)
                 {
