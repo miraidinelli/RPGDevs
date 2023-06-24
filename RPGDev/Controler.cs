@@ -1,8 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace RPGDev
@@ -35,10 +37,14 @@ namespace RPGDev
             }
             Mp1 = new Mapa();
             P1.Localização = Mp1.entrada;
+            Console.Clear();
 
             Console.WriteLine("Você entra em uma Masmorra Escura");
+            Thread.Sleep(1500);
             Console.WriteLine("Depois de andar um pouco, você olha pra trás e percebe que se perdeu");
-            Console.WriteLine("Agora perdido, você tem 4 opções");
+            Thread.Sleep(1500);
+            Console.WriteLine("Agora perdido, você precisa decidir");
+            Thread.Sleep(1500);
             OpcoesMap();
             Console.ReadKey();
         }
@@ -51,7 +57,7 @@ namespace RPGDev
             int tipo = int.Parse(Console.ReadLine());
             if (tipo == 1) { P1 = new Player(nome, "GUERREIRO", tipo); }
             else if (tipo == 2) { P1 = new Player(nome, "MAGO", tipo); }
-            else if (tipo == 3) { P1 = new Player(nome, "RANGE", tipo); }
+            else if (tipo == 3) { P1 = new Player(nome, "RANGER", tipo); }
         }
 
         public void OpcoesMap()
@@ -154,12 +160,18 @@ namespace RPGDev
             int ocupante = Mp1.formatoMapa[P1.Localização[0], P1.Localização[1]];
             if (ocupante == 0)
             {
+                Console.WriteLine("Tudo parece vazio");
                 Console.WriteLine("Não tem ninguem por perto");
                 OpcoesMap();
             }
 
             if (ocupante == 4)
             {
+                Console.WriteLine("Você vê um brilho a frente");
+                Thread.Sleep(1500);
+                Console.WriteLine("Apressado você corre em direção a luz");
+                Console.Clear();
+                Console.WriteLine("Parabéns");
                 Console.WriteLine("Voce achou a saída");
                 Console.WriteLine($"Você terminou com {P1.Experiencia} de experiência");
                 Console.WriteLine("Pressione Qualquer Tecla pra Fechar");
@@ -269,7 +281,7 @@ namespace RPGDev
 
                 else
                 {
-                    Console.WriteLine(" Você Faleceu! ");
+                    Console.WriteLine(" Você Faleceu!");
                     Console.WriteLine("Pressione qualquer tecla para encerrar");
                     Console.ReadKey();
                     Environment.Exit(0);

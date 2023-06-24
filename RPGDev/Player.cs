@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,7 +20,7 @@ namespace RPGDev
         {
            
         }
-        public Player(string nome,string clase, int espec)
+        public Player(string nome,string classe, int espec)
         {
             this.Nome = nome;
             this.ClasseLuta = Classe;
