@@ -45,7 +45,7 @@ namespace RPGDev
 
         public void VerificarTipo(int opcao)
         {
-            Console.WriteLine("Digite o Nome");
+            Console.WriteLine("\nDigite o Nome");
             string nome = Console.ReadLine();
             Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
             int tipo = int.Parse(Console.ReadLine());
@@ -56,7 +56,7 @@ namespace RPGDev
 
         public void OpcoesMap()
         {
-            Console.WriteLine("Digite 1 para ir para o Norte");
+            Console.WriteLine("\nDigite 1 para ir para o Norte");
             Console.WriteLine("Digite 2 para ir para o Sul");
             Console.WriteLine("Digite 3 para ir para o Leste");
             Console.WriteLine("Digite 4 para ir para o Oeste");
@@ -143,6 +143,7 @@ namespace RPGDev
             Console.WriteLine($"Ataque - {P1.Ataque}");
             Console.WriteLine($"Defesa - {P1.Defesa}");
             Console.WriteLine($"Experiência - {P1.Experiencia}");
+            Console.WriteLine($"Level - {P1.Nivel}");
             Console.WriteLine($"Pressione qualquer tecla para retornar ao mapa");
             Console.ReadKey();
             Console.Clear();
@@ -160,7 +161,7 @@ namespace RPGDev
             if (ocupante == 4)
             {
                 Console.WriteLine("Voce achou a saída");
-                Console.WriteLine($"Você terminou  com {P1.Experiencia} de experiência");
+                Console.WriteLine($"Você terminou com {P1.Experiencia} de experiência");
                 Console.WriteLine("Pressione Qualquer Tecla pra Fechar");
                 Console.ReadKey();
             }
@@ -180,7 +181,7 @@ namespace RPGDev
 
         public void OpcoesCombat()
         {
-            Console.WriteLine($"Você entrou em combate com o {Mob.Nome} ");
+            Console.WriteLine($"\nVocê entrou em combate com o {Mob.Nome} ");
             Combate cbt = new Combate();
             Console.WriteLine("digite 1 para ir para Batalha");
             Console.WriteLine("digite 2 para tentar Fugir");
@@ -192,9 +193,10 @@ namespace RPGDev
                 {
                     P1.Experiencia += Mob.MobExperiencia;
 
-                    Console.WriteLine($"Você ganhou {Mob.MobExperiencia}");
+                    Console.WriteLine($"\nVocê ganhou {Mob.MobExperiencia} de experiência");
+                    Console.WriteLine($"Seu nível é {P1.SetNivel()}");
                     ChanceLoot();
-                    Console.WriteLine($"Pressione qualquer tecla para continuar sua aventura");
+                    Console.WriteLine($"\nPressione qualquer tecla para continuar sua aventura");
                     Console.ReadKey();
                     Console.Clear();
                     OpcoesMap();
@@ -202,7 +204,7 @@ namespace RPGDev
 
                 else
                 {
-                    Console.WriteLine(" Você Faleceu! ");
+                    Console.WriteLine("\nVocê Faleceu! ");
                     Console.WriteLine("Pressione qualquer tecla para encerrar");
                     Console.ReadKey();
                     Environment.Exit(0);
@@ -217,7 +219,7 @@ namespace RPGDev
             if (rdn.Next(0, 1) == 0)
             {
                 Itens item01 = new Itens().Loot();
-                Console.WriteLine($"Parabéns!!! Você Achou um {item01.NomeItem}");
+                Console.WriteLine($"\nParabéns!!! Você Achou um {item01.NomeItem}");
                 P1.itens.Add(item01);
             }
         }
@@ -245,12 +247,12 @@ namespace RPGDev
             int i = random.Next(1, 3);
             if (i == 1)
             {
-                Console.WriteLine("Você conseguiu fugir do monstro! Retornou ao mapa.");
+                Console.WriteLine("\nVocê conseguiu fugir do monstro! Retornou ao mapa.");
                 OpcoesMap();
             }
             if (i == 2)
             {
-                Console.WriteLine("Você não conseguiu fugir. Termine a batalha.");
+                Console.WriteLine("\nVocê não conseguiu fugir. Termine a batalha.");
                 Console.WriteLine($"Você entrou em combate com o {Mob.Nome} ");
                 Combate cbt = new Combate();
                 if (cbt.RealizarCombat(P1, Mob))

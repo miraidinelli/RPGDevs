@@ -14,6 +14,8 @@ namespace RPGDev
         public Monstros mob1;
         public Player p1;
         int turn;
+        public int[] LeveisPlayer = new int[5] { 1, 2, 3, 4, 5 };
+
         public Combate()
         {
             turn = 0;
