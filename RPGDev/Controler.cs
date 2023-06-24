@@ -20,7 +20,7 @@ namespace RPGDev
 
         public Controler()
         {
-
+            Console.OutputEncoding = Encoding.Unicode;
             menu = new Menu();
             int menuOpcao = menu.MenuInicial();
             if (menuOpcao == 1)
@@ -39,12 +39,24 @@ namespace RPGDev
             P1.Localização = Mp1.entrada;
             Console.Clear();
 
+<<<<<<< Updated upstream
             Console.WriteLine("Você entra em uma Masmorra Escura");
             Thread.Sleep(1500);
             Console.WriteLine("Depois de andar um pouco, você olha pra trás e percebe que se perdeu");
             Thread.Sleep(1500);
             Console.WriteLine("Agora perdido, você precisa decidir");
             Thread.Sleep(1500);
+=======
+            string m1 = "Você entra em uma Masmorra Escura";
+            foreach (char letra in m1) { Console.Write(letra); Thread.Sleep(50); }
+            Console.WriteLine();
+            string m2 = "Depois de andar um pouco, você olha pra trás e percebe que se perdeu";
+            foreach (char letra in m2) { Console.Write(letra); Thread.Sleep(50); }
+            Console.WriteLine();
+            string m3 = "Agora perdido, você tem 4 opções:";
+            foreach (char letra in m3) { Console.Write(letra); Thread.Sleep(50); }
+            Console.WriteLine();
+>>>>>>> Stashed changes
             OpcoesMap();
             Console.ReadKey();
         }
@@ -62,10 +74,10 @@ namespace RPGDev
 
         public void OpcoesMap()
         {
-            Console.WriteLine("Digite 1 para ir para o Norte");
-            Console.WriteLine("Digite 2 para ir para o Sul");
-            Console.WriteLine("Digite 3 para ir para o Leste");
-            Console.WriteLine("Digite 4 para ir para o Oeste");
+            Console.WriteLine("Digite 1 para ir para o Norte \u2191");
+            Console.WriteLine("Digite 2 para ir para o Sul \u2193");
+            Console.WriteLine("Digite 3 para ir para o Leste \u2192");
+            Console.WriteLine("Digite 4 para ir para o Oeste \u2190");
             Console.WriteLine("Digite 5 para ver status");
             Console.WriteLine("Digite 6 para ver Mochila");
             int opcao = int.Parse(Console.ReadLine());
@@ -194,8 +206,8 @@ namespace RPGDev
         {
             Console.WriteLine($"Você entrou em combate com o {Mob.Nome} ");
             Combate cbt = new Combate();
-            Console.WriteLine("digite 1 para ir para Batalha");
-            Console.WriteLine("digite 2 para tentar Fugir");
+            Console.WriteLine("digite 1 para ir para Batalha ⚔");
+            Console.WriteLine("digite 2 para tentar Fugir \U0001F3C3");
             int op = int.Parse(Console.ReadLine());
             if (op == 2) TentarFugir();
             if (op == 1)

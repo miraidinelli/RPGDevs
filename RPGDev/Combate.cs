@@ -27,8 +27,8 @@ namespace RPGDev
             while (!IsDead(p1) && !IsDead(mob1))
             {
                 Console.WriteLine("");
-                Console.WriteLine("digite 1 para Atacar");
-                Console.WriteLine("digite 2 para Defender");
+                Console.WriteLine("digite 1 para Atacar ⚔");
+                Console.WriteLine("digite 2 para Defender 🛡");
                 int opcao = int.Parse(Console.ReadLine());
                 if (opcao == 1)
                 {

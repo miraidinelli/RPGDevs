@@ -18,7 +18,7 @@ namespace RPGDev
 
         public Mapa()
         {
-            Console.WriteLine("\nGerando Mapa");
+            Console.Write("\nGerando Mapa ");
             formatoMapa = new int[alturaM,larguraM];
             mobSpaw = new int[] { 0,1,2,3 };
             MontarMapa();
