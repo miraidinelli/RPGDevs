@@ -56,8 +56,7 @@ namespace RPGDev
         public void Atacar()
         {
             mob1.HP -= p1.Ataque;
-            Console.WriteLine
-                ($"O Seu ataque causou {p1.CalcularDano()} de dano");
+            Console.WriteLine($"O Seu ataque causou {p1.CalcularDano()} de dano");
         }
 
         public void Defender()
@@ -67,9 +66,11 @@ namespace RPGDev
 
         public void MobAtaca()
         {
+            Random rd = new Random();
+            var list = new List<string> { "Mordida", "Dentada Infecciosa", "Arranhão", "Cauda Espinhenta", "Agarrão Fedorento" };
+            int index = rd.Next(list.Count);
             p1.HP -= mob1.Ataque;
-            Console.WriteLine
-                ($"{mob1.Nome} Atacou e causou {mob1.CalcularDano()}");
+            Console.WriteLine($"{mob1.Nome} usou {list[index]} e causou {mob1.CalcularDano()}");
         }
 
         public bool IsDead(Personagem p1)

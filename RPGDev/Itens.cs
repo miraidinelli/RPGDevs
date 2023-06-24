@@ -24,7 +24,7 @@ namespace RPGDev
 
         public Itens Pocao()
         {
-            NomeItem = "Pocao Pequena";
+            NomeItem = "Poção Pequena";
             TipoItem = 1;
             PoderItem = 10;
             return this;
@@ -32,7 +32,7 @@ namespace RPGDev
         
         public Itens Espada()
         {
-            NomeItem = "Essencia da Espada";
+            NomeItem = "Essência da Espada";
             TipoItem = 2;
             Ataque = 3;
             return this;
@@ -40,7 +40,7 @@ namespace RPGDev
         
         public Itens Escudo()
         {
-            NomeItem = "Essencia da Protecao";
+            NomeItem = "Essência da Proteção";
             TipoItem = 3;
             Defesa = 3;
             return this;
