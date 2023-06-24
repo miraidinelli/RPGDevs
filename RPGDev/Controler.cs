@@ -39,24 +39,15 @@ namespace RPGDev
             P1.Localização = Mp1.entrada;
             Console.Clear();
 
-<<<<<<< Updated upstream
-            Console.WriteLine("Você entra em uma Masmorra Escura");
-            Thread.Sleep(1500);
-            Console.WriteLine("Depois de andar um pouco, você olha pra trás e percebe que se perdeu");
-            Thread.Sleep(1500);
-            Console.WriteLine("Agora perdido, você precisa decidir");
-            Thread.Sleep(1500);
-=======
             string m1 = "Você entra em uma Masmorra Escura";
             foreach (char letra in m1) { Console.Write(letra); Thread.Sleep(50); }
             Console.WriteLine();
             string m2 = "Depois de andar um pouco, você olha pra trás e percebe que se perdeu";
             foreach (char letra in m2) { Console.Write(letra); Thread.Sleep(50); }
             Console.WriteLine();
-            string m3 = "Agora perdido, você tem 4 opções:";
+            string m3 = "Agora perdido, você precisa decidir:";
             foreach (char letra in m3) { Console.Write(letra); Thread.Sleep(50); }
             Console.WriteLine();
->>>>>>> Stashed changes
             OpcoesMap();
             Console.ReadKey();
         }
