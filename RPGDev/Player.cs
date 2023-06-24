@@ -34,21 +34,19 @@ namespace RPGDev
             expNivel = new int[] { 30, 60, 90, 150, 200 };
             itens = new List<Itens>();
             
-            if(espec == 1) {
-                Ataque += 7; }
-            else if (espec == 2)
-            {
-                Defesa += 7;
-            }
-            else
-            {
-                Ataque += 3;
-                Defesa += 3;
-            }
+            
 
         }
 
+        public override int CalcularDano()
+        {
+            Random random = new Random();
+            int numeroSorteado = random.Next(1, 3);
 
+            if (numeroSorteado == 1) return (base.CalcularDano() * 2);
+            return Ataque;
+            
+        }
 
     }
 }

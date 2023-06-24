@@ -59,7 +59,7 @@ namespace RPGDev
         // Método CalcularDano
         public virtual int CalcularDano()
         {
-            return 0;
+            return Ataque;
         }
 
         // Sobrescrevendo o ToString 

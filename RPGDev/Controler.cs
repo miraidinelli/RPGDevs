@@ -14,11 +14,11 @@ namespace RPGDev
         public Monstros Mob { get; set; }
         public Mapa Mp1 { get; set; }
         public Itens Item { get; set; }
-        public double Dificuldade { get; set; }
+        
 
         public Controler()
         {
-            Dificuldade = 1.0;
+            
             menu = new Menu();
             int menuOpcao = menu.MenuInicial();
             if (menuOpcao == 1)
@@ -170,9 +170,9 @@ namespace RPGDev
                 Console.WriteLine("Você encontrou um monstro");
                 Monstros criadormob = new Monstros();
 
-                if (ocupante == 2) { Mob = criadormob.Mob02(Dificuldade); }
-                else if (ocupante == 3) { Mob = criadormob.Mob03(Dificuldade); }
-                else { Mob = criadormob.Mob01(Dificuldade); }
+                if (ocupante == 2) { Mob = criadormob.Mob02(P1.Nivel); }
+                else if (ocupante == 3) { Mob = criadormob.Mob03(P1.Nivel); }
+                else { Mob = criadormob.Mob01(P1.Nivel); }
 
                 OpcoesCombat();
             }
@@ -185,7 +185,7 @@ namespace RPGDev
             if (cbt.RealizarCombat(P1,Mob))
             {
                 P1.Experiencia += Mob.MobExperiencia;
-                Dificuldade += 0.1;
+               
                 Console.WriteLine($"Você ganhou {Mob.MobExperiencia}");
                 ChanceLoot();
                 Console.WriteLine($"Pressione qualquer tecla para continuar sua aventura");
@@ -198,6 +198,7 @@ namespace RPGDev
             {
                 Console.WriteLine(" Você Faleceu! ");
                 Console.WriteLine("Pressione qualquer tecla para encerrar");
+                Console.ReadKey();
                 Environment.Exit(0);
             }
             Console.ReadKey();
