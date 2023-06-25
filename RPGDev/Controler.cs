@@ -22,7 +22,7 @@ namespace RPGDev
         {
             Console.OutputEncoding = Encoding.Unicode;
             menu = new Menu();
-            
+
             int menuOpcao = menu.MenuInicial();
             if (menuOpcao == 4)
             {
@@ -33,7 +33,7 @@ namespace RPGDev
             {
                 VerificarTipo(menuOpcao);
             }
-            
+
             Mp1 = new Mapa();
             P1.Localização = Mp1.entrada;
             Console.Clear();
@@ -53,13 +53,31 @@ namespace RPGDev
 
         public void VerificarTipo(int opcao)
         {
-            Console.WriteLine("\nDigite o Nome");
+            Console.Write("\nDigite o Nome: ");
             string nome = Console.ReadLine();
-            Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
-            int tipo = int.Parse(Console.ReadLine());
-            if (tipo == 1) { P1 = new Player(nome, "GUERREIRO", tipo); }
-            else if (tipo == 2) { P1 = new Player(nome, "MAGO", tipo); }
-            else if (tipo == 3) { P1 = new Player(nome, "RANGER", tipo); }
+            //Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
+            //string tipo = Console.ReadLine();
+            //while (tipo != "1" && tipo != "2" && tipo != "3")
+            //{
+            //    Console.Write(  $"Caro Jogador, digite uma opção valida: ");
+            //    tipo = Console.ReadLine();
+            //}
+            //if (tipo == "1") { P1 = new Player(nome,"GUERREIRO",tipo); }
+            //else if (tipo == "2") { P1 = new Player(nome,"MAGO",tipo); }
+            //else if (tipo == "3") { P1 = new Player(nome,"RANGER",tipo); }
+
+            if (opcao == 1)
+            {
+                P1 = new Player(nome,"GUERREIRO","");
+            }
+            else if (opcao == 2)
+            {
+                P1 = new Player(nome,"MAGO","");
+            }
+            else
+            {
+                P1 = new Player(nome,"RANGER","");
+            }
         }
 
         public void OpcoesMap()
@@ -102,9 +120,9 @@ namespace RPGDev
         private void MostrarMochila()
         {
             Console.WriteLine($"Mochila do jogador");
-            Console.WriteLine($"Mochila Contem {P1.itens.Count}");
+            Console.WriteLine($"Mochila Contem {P1.Itens.Count}");
             int cont = 1;
-            foreach (Itens i in P1.itens)
+            foreach (Itens i in P1.Itens)
             {
                 Console.WriteLine($"{cont} - {i.NomeItem}");
             }
@@ -123,23 +141,23 @@ namespace RPGDev
 
         private void UtilizarItem(int opcao)
         {
-            if (P1.itens[opcao].TipoItem == 1)
+            if (P1.Itens[opcao].TipoItem == 1)
             {
-                P1.HP += P1.itens[opcao].PoderItem;
-                Console.WriteLine($"Voce Utilizou {P1.itens[opcao].NomeItem} e recuperou {P1.itens[opcao].PoderItem} de vida!");
-                P1.itens.RemoveAt(opcao);
+                P1.HP += P1.Itens[opcao].PoderItem;
+                Console.WriteLine($"Voce Utilizou {P1.Itens[opcao].NomeItem} e recuperou {P1.Itens[opcao].PoderItem} de vida!");
+                P1.Itens.RemoveAt(opcao);
             }
-            else if (P1.itens[opcao].TipoItem == 2)
+            else if (P1.Itens[opcao].TipoItem == 2)
             {
-                P1.Ataque += P1.itens[opcao].Ataque;
-                Console.WriteLine($"Voce Utilizou {P1.itens[opcao].NomeItem} e Aumentou seu ataque em  {P1.itens[opcao].PoderItem} !");
-                P1.itens.RemoveAt(opcao);
+                P1.Ataque += P1.Itens[opcao].Ataque;
+                Console.WriteLine($"Voce Utilizou {P1.Itens[opcao].NomeItem} e Aumentou seu ataque em  {P1.Itens[opcao].PoderItem} !");
+                P1.Itens.RemoveAt(opcao);
             }
-            else if (P1.itens[opcao].TipoItem == 3)
+            else if (P1.Itens[opcao].TipoItem == 3)
             {
-                P1.Defesa += P1.itens[opcao].Defesa;
-                Console.WriteLine($"Voce Utilizou {P1.itens[opcao].NomeItem} Aumentou sua defesa em  {P1.itens[opcao].PoderItem} !");
-                P1.itens.RemoveAt(opcao);
+                P1.Defesa += P1.Itens[opcao].Defesa;
+                Console.WriteLine($"Voce Utilizou {P1.Itens[opcao].NomeItem} Aumentou sua defesa em  {P1.Itens[opcao].PoderItem} !");
+                P1.Itens.RemoveAt(opcao);
             };
         }
 
@@ -160,7 +178,7 @@ namespace RPGDev
 
         private void ChecarMapa()
         {
-            int ocupante = Mp1.formatoMapa[P1.Localização[0], P1.Localização[1]];
+            int ocupante = Mp1.formatoMapa[P1.Localização[0],P1.Localização[1]];
             if (ocupante == 0)
             {
                 Console.WriteLine("Tudo parece vazio");
@@ -204,7 +222,7 @@ namespace RPGDev
             if (op == 2) TentarFugir();
             if (op == 1)
             {
-                if (cbt.RealizarCombat(P1, Mob))
+                if (cbt.RealizarCombat(P1,Mob))
                 {
                     P1.Experiencia += Mob.MobExperiencia;
 
@@ -231,11 +249,11 @@ namespace RPGDev
         private void ChanceLoot()
         {
             Random rdn = new Random();
-            if (rdn.Next(0, 1) == 0)
+            if (rdn.Next(0,1) == 0)
             {
                 Itens item01 = new Itens().Loot();
                 Console.WriteLine($"\nParabéns!!! Você Achou um {item01.NomeItem}");
-                P1.itens.Add(item01);
+                P1.Itens.Add(item01);
             }
         }
 
@@ -259,7 +277,7 @@ namespace RPGDev
         public void TentarFugir()
         {
             Random random = new Random();
-            int i = random.Next(1, 3);
+            int i = random.Next(1,3);
             if (i == 1)
             {
                 Console.WriteLine("\nVocê conseguiu fugir do monstro! Retornou ao mapa.");
@@ -270,7 +288,7 @@ namespace RPGDev
                 Console.WriteLine("\nVocê não conseguiu fugir. Termine a batalha.");
                 Console.WriteLine($"Você entrou em combate com o {Mob.Nome} ");
                 Combate cbt = new Combate();
-                if (cbt.RealizarCombat(P1, Mob))
+                if (cbt.RealizarCombat(P1,Mob))
                 {
                     P1.Experiencia += Mob.MobExperiencia;
                     P1.SetNivel();

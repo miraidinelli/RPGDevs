@@ -10,21 +10,28 @@ namespace RPGDev
     {
         public int MenuInicial()
         {
-            Console.WriteLine("\nCriação de Personagem");
-            Console.WriteLine("Digite uma Opção para Começar");
-            Console.WriteLine("1 - Criar Personagem");
-            Console.WriteLine("2 - Sair");
-
+            Console.Write($"\n Criação de Personagem" +
+                              $"\n Digite uma opção para começar" +
+                              $"\n 1 - Criar Personagem" +
+                              $"\n 2 - Sair" +
+                              $"\n Opção -> ");
             string opcao = Console.ReadLine();
             switch (opcao)
             {
                 case "1":
-                    Console.WriteLine("\nEscolha a Clase do seu Personagem:");
-                    Console.WriteLine("Digite o Número Desejado");
-                    Console.WriteLine("1 - Guerreiro");
-                    Console.WriteLine("2 - Mago");
-                    Console.WriteLine("3 - Ranger");
+                    Console.Write($"\n Escolha a Classe do seu Personagem" +
+                                      $"\n Digite a opção desejada" +
+                                      $"\n 1 - Guerreiro" +
+                                      $"\n 2 - Mago" +
+                                      $"\n 3 - Ranger" +
+                                      $"\n Opção -> ");
                     string classe = Console.ReadLine();
+                    while (classe != "1" && classe != "2" && classe != "3")
+                    {
+                        Console.Write($"Caro Jogador, digite uma opção valida: ");
+                        classe = Console.ReadLine();
+                    }
+
                     switch (classe)
                     {
                         case "1":
