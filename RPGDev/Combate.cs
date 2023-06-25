@@ -68,10 +68,12 @@ namespace RPGDev
         public void MobAtaca()
         {
             Random rd = new Random();
-            var list = new List<string> { "Mordida", "Dentada Infecciosa", "Arranhão", "Cauda Espinhenta", "Agarrão Fedorento" };
+            var list = new List<string>
+            { "Mordida", "Dentada Infecciosa", "Arranhão", "Cauda Espinhenta", "Agarrão Fedorento" };
             int index = rd.Next(list.Count);
             p1.HP -= mob1.Ataque;
-            Console.WriteLine($"{mob1.Nome} usou {list[index]} e causou {mob1.CalcularDano()} de Dano");
+            Console.WriteLine
+                ($"{mob1.Nome} usou {list[index]} e causou {mob1.CalcularDano()} de Dano");
         }
 
         public bool IsDead(Personagem p1)

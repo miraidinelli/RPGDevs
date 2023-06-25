@@ -31,39 +31,45 @@ namespace RPGDev
 
     public class Guerreiro : Personagem
     {
-        public Guerreiro(string nome,int ataque,int defesa,int hp,string forca)
+        public int Forca { get; set; }
+        public Guerreiro(string nome,int hp,int ataque,int defesa,int forca)
         {
             Nome = nome;
             HP = hp;
             Ataque = ataque;
             Defesa = defesa;
-            Habilidade = new Habilidade(forca,"Golpes",Ataque * +2);
+            Forca = forca;
+            Habilidade = new Habilidade("Corte Preciso","Fortificada",Ataque * +2);
         }
         public Guerreiro() { }
     }
 
     public class Mago : Personagem
     {
-        public Mago(string nome,int ataque,int defesa,int hp,string magia)
+        public int Magia { get; set; }
+        public Mago(string nome,int hp,int ataque,int defesa,int magia)
         {
             Nome = nome;
             HP = hp;
             Ataque = ataque;
             Defesa = defesa;
-            Habilidade = new Habilidade(magia,"Misteriosa",Ataque - 1);
+            Magia = magia;
+            Habilidade = new Habilidade("Teletransporte","Ilusão",Ataque - 1);
         }
         public Mago() { }
     }
 
     public class Ranger : Personagem
     {
-        public Ranger(string nome,int ataque,int defesa,int hp,string destreza)
+        public int Destreza { get; set; }
+        public Ranger(string nome,int hp,int ataque,int defesa,int destreza)
         {
             Nome = nome;
             HP = hp;
             Ataque = ataque;
             Defesa = defesa;
-            Habilidade = new Habilidade(destreza,"Capacidade",Ataque - 2);
+            Destreza = destreza;
+            Habilidade = new Habilidade("Tiro Preciso","Armadilhas",Ataque - 2);
         }
         public Ranger() { }
     }
