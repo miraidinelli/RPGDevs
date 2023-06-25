@@ -22,23 +22,18 @@ namespace RPGDev
         {
             Console.OutputEncoding = Encoding.Unicode;
             menu = new Menu();
+            
             int menuOpcao = menu.MenuInicial();
-            if (menuOpcao == 1)
-            {
-                VerificarTipo(menuOpcao);
-            }
-            else if (menuOpcao == 2)
-            {
-                VerificarTipo(menuOpcao);
-            }
-            else if (menuOpcao == 3)
-            {
-                VerificarTipo(menuOpcao);
-            }
-            else if(menuOpcao == 4) 
+            if (menuOpcao == 4)
             {
                 Environment.Exit(0);
             }
+
+            else
+            {
+                VerificarTipo(menuOpcao);
+            }
+            
             Mp1 = new Mapa();
             P1.Localização = Mp1.entrada;
             Console.Clear();
