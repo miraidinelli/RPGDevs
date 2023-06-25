@@ -150,6 +150,7 @@ namespace RPGDev
 
         private void MostrarStatus()
         {
+            P1.SetNivel();
             Console.WriteLine($"Status do jogador");
             Console.WriteLine($"Nome - {P1.Nome}");
             Console.WriteLine($"Vida - {P1.HP}");

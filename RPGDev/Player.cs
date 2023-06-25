@@ -53,15 +53,18 @@ namespace RPGDev
             if(Experiencia <= 30)
             {
                 Nivel = 1;
+                Ataque = Ataque * Nivel;
                 return Nivel;
             }
             if (Experiencia > 30 && Experiencia <= 40)
             {
                 Nivel = 2;
+                Ataque = Ataque * Nivel;
                 return Nivel;
             } else if (Experiencia > 40)
             {
                 Nivel = 3;
+                Ataque = Ataque * Nivel;
                 return Nivel;
             }
             Nivel = 0;
