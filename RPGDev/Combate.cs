@@ -36,13 +36,24 @@ namespace RPGDev
                 {
                     Console.WriteLine("Você realiza um ataque!");
                     Atacar();
-                    Console.WriteLine("{0} realiza um ataque!",mob1.Nome);
+                    Console.WriteLine("\n{0} realiza um ataque!",mob1.Nome);
                     MobAtaca();
                 }
 
                 if (opcao == 2)
                 {
-
+                    if(p1.Defesa > 0)
+                    {
+                        p1.Defesa -= 1;
+                        p1.HP += 5;
+                        Console.WriteLine($"Você se defendeu e curou 5 de vida! Restam {p1.Defesa} defesas");
+                        Console.WriteLine("Vida " + p1.HP);
+                    } else if(p1.Defesa == 0 )
+                    {
+                        Console.WriteLine("\nVocê não possui defesas! ");
+                        Console.WriteLine("{0} realiza um ataque!", mob1.Nome);
+                        MobAtaca();
+                    }
                 }
             }
             if (IsDead(p1)) { return false; }

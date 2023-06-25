@@ -142,6 +142,7 @@ namespace RPGDev
 
         private void UtilizarItem(int opcao)
         {
+            P1.SetNivel();
             if (P1.Itens[opcao].TipoItem == 1)
             {
                 P1.HP += P1.Itens[opcao].PoderItem;
