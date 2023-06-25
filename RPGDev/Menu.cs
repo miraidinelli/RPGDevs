@@ -24,12 +24,20 @@ namespace RPGDev
                     Console.WriteLine("1 - Guerreiro");
                     Console.WriteLine("2 - Mago");
                     Console.WriteLine("3 - Ranger");
-                    int classe = int.Parse(Console.ReadLine());
-
-                    return classe;
+                    string classe = Console.ReadLine();
+                    switch(classe)
+                    {
+                        case "1":
+                            return 1;
+                        case "2": 
+                            return 2;
+                        case "3":
+                            return 3;
+                    }
+                    return 0;
                 case "2":
 
-                    return 2;
+                    return 4;
                 default:
                     Console.WriteLine("\nOpção inválida! Tente novamente.");
                     return 0;
