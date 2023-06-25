@@ -35,6 +35,10 @@ namespace RPGDev
             {
                 VerificarTipo(menuOpcao);
             }
+            else if(menuOpcao == 4) 
+            {
+                Environment.Exit(0);
+            }
             Mp1 = new Mapa();
             P1.Localização = Mp1.entrada;
             Console.Clear();
