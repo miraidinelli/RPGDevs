@@ -12,7 +12,6 @@ namespace RPGDev
         public int Nivel { get; set; }
         public int[] Localização { get; set; }
         public string ClasseLuta { get; set; }
-        public string Especializacao { get; set; }
         public int[] ExpNivel { get; set; }
         public List<Itens> Itens { get; set; }
 
@@ -20,7 +19,7 @@ namespace RPGDev
         {
         }
 
-        public Player(string nome,string classe,string espec)
+        public Player(string nome,string classe,Habilidade habilidade)
         {
             Nome = nome;
             ClasseLuta = Classe;

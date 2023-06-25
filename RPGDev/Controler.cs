@@ -68,15 +68,16 @@ namespace RPGDev
 
             if (opcao == 1)
             {
-                P1 = new Player(nome,"GUERREIRO","");
+                P1 = new Player(nome,"GUERREIRO",new Habilidade("Corte Preciso","Fortificada",13));
+                //Guerreiro guerreiro = new Guerreiro(nome);
             }
             else if (opcao == 2)
             {
-                P1 = new Player(nome,"MAGO","");
+                P1 = new Player(nome,"MAGO",new Habilidade("Teletransporte","Ilusão",14));
             }
             else
             {
-                P1 = new Player(nome,"RANGER","");
+                P1 = new Player(nome,"RANGER",new Habilidade("Tiro Preciso","Armadilhas",15));
             }
         }
 
