@@ -34,10 +34,28 @@ namespace RPGDev
                 int opcao = int.Parse(Console.ReadLine());
                 if (opcao == 1)
                 {
-                    Console.WriteLine("Você realiza um ataque!");
-                    Atacar();
-                    Console.WriteLine("\n{0} realiza um ataque!",mob1.Nome);
-                    MobAtaca();
+                    if(player.ClasseLuta == "GUERREIRO")
+                    {
+                        Console.WriteLine("Você usa Trespassar!");
+                        Atacar();
+                        Console.WriteLine("\n{0} realiza um ataque!",mob1.Nome);
+                        MobAtaca();
+                    }
+                    else if(player.ClasseLuta == "MAGO")
+                    {
+                        Console.WriteLine("Você usa Misseis Magicos!");
+                        Atacar();
+                        Console.WriteLine("\n{0} realiza um ataque!", mob1.Nome);
+                        MobAtaca();
+                    }
+                    else if(player.ClasseLuta == "RANGER")
+                    {
+                        Console.WriteLine("Você usa Tiro Certeiro!");
+                        Atacar();
+                        Console.WriteLine("\n{0} realiza um ataque!", mob1.Nome);
+                        MobAtaca();
+                    }
+                    
                 }
 
                 if (opcao == 2)

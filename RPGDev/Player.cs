@@ -22,7 +22,7 @@ namespace RPGDev
         public Player(string nome,string classe,Habilidade habilidade)
         {
             Nome = nome;
-            ClasseLuta = Classe;
+            ClasseLuta = classe;
             Nivel = 1;
             Experiencia = 1;
             Localização = new int[] { 1,1 };
