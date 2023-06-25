@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,7 +30,7 @@ namespace RPGDev
             Localização = new int[] { 1, 1 };
             Ataque = 10;
             Defesa = 10;
-            HP = 20;
+            HP = 50;
             expNivel = new int[] { 30, 60, 90, 150, 200 };
             itens = new List<Itens>();
             
@@ -42,10 +42,30 @@ namespace RPGDev
         {
             Random random = new Random();
             int numeroSorteado = random.Next(1, 3);
-
-            if (numeroSorteado == 1) return (base.CalcularDano() * 2);
-            return Ataque;
             
+            if (numeroSorteado == 1) return ((base.CalcularDano() * Nivel) * 2);
+            return (Ataque * Nivel);
+
+        }
+
+        public int SetNivel()
+        {
+            if(Experiencia <= 30)
+            {
+                Nivel = 1;
+                return Nivel;
+            }
+            if (Experiencia > 30 && Experiencia <= 40)
+            {
+                Nivel = 2;
+                return Nivel;
+            } else if (Experiencia > 40)
+            {
+                Nivel = 3;
+                return Nivel;
+            }
+            Nivel = 0;
+            return Nivel;
         }
 
     }
