@@ -41,6 +41,10 @@ namespace RPGDev
             Forca = forca;
             Habilidade = new Habilidade("Corte Preciso","Fortificada",Ataque * +2);
         }
+        public int DanoGuerreiro(int dano)
+        {
+            return dano + 5 ;
+        }
         public Guerreiro() { }
     }
 
@@ -57,6 +61,11 @@ namespace RPGDev
             Habilidade = new Habilidade("Teletransporte","Ilusão",Ataque - 1);
         }
         public Mago() { }
+
+        public int DanoMago(int dano)
+        {
+            return dano + 6;
+        }
     }
 
     public class Ranger : Personagem
@@ -72,5 +81,9 @@ namespace RPGDev
             Habilidade = new Habilidade("Tiro Preciso","Armadilhas",Ataque - 2);
         }
         public Ranger() { }
+        public int DanoRanger(int dano)
+        {
+            return dano + 3;
+        }
     }
 }
