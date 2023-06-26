@@ -62,3 +62,11 @@ C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\obj\Deb
 C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
 C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\obj\Debug\RPGDev.exe
 C:\Users\caiod\OneDrive\Área de Trabalho\ProjetoDevs2Blu\RPGDevs\RPGDev\obj\Debug\RPGDev.pdb
+C:\Users\gpalmarante\source\repos\newapp\rpg\RPGDev\bin\Debug\RPGDev.exe.config
+C:\Users\gpalmarante\source\repos\newapp\rpg\RPGDev\bin\Debug\RPGDev.exe
+C:\Users\gpalmarante\source\repos\newapp\rpg\RPGDev\bin\Debug\RPGDev.pdb
+C:\Users\gpalmarante\source\repos\newapp\rpg\RPGDev\obj\Debug\RPGDev.csproj.AssemblyReference.cache
+C:\Users\gpalmarante\source\repos\newapp\rpg\RPGDev\obj\Debug\RPGDev.csproj.SuggestedBindingRedirects.cache
+C:\Users\gpalmarante\source\repos\newapp\rpg\RPGDev\obj\Debug\RPGDev.csproj.CoreCompileInputs.cache
+C:\Users\gpalmarante\source\repos\newapp\rpg\RPGDev\obj\Debug\RPGDev.exe
+C:\Users\gpalmarante\source\repos\newapp\rpg\RPGDev\obj\Debug\RPGDev.pdb
