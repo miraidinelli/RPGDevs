@@ -35,7 +35,7 @@ namespace RPGDev
                               "\n Digite 2 para Defender 🛡" +
                               "\n Opção -> ");
 
-                // validar opção
+           
                 int opcao = int.Parse(Console.ReadLine());
                 if (opcao > 2 || opcao <= 0)
                 {
@@ -89,7 +89,7 @@ namespace RPGDev
                 mobDead = IsDead(mob1);
             }
 
-            // verificar lógica
+           
             if (playerDead) { return false; }
             if (mobDead) { return true; }
             return true;
