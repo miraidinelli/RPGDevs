@@ -22,6 +22,7 @@ namespace RPGDev
             formatoMapa = new int[alturaM,larguraM];
             mobSpaw = new int[] { 0,1,2,3 };
             MontarMapa();
+            
             Console.Write(".");
             Thread.Sleep(700);
             Console.Write(".");
@@ -49,6 +50,61 @@ namespace RPGDev
             int ySaida = rdn.Next(0,10);
             formatoMapa[xSaida,ySaida] = 4;
             saida = new int[] { xSaida,ySaida };
+        }
+        public void MostrarMApa(List<int> passos)
+        {
+
+            int[] ultimapegada = new int[] { entrada[0], entrada[1] };
+            string mapaComeco = "◇";
+            string mappassos = "□";
+            string mapDesconhecido = "▩";
+            string[,] MapaMostrar = new string[alturaM, larguraM];
+            MapaMostrar[ultimapegada[0], ultimapegada[1]] = mapaComeco;
+            
+            for (int i = 0; i < passos.Count; i++)
+            {
+                if(passos[i] == 4) {
+
+                    ultimapegada[1]--;
+                    MapaMostrar[ultimapegada[0], ultimapegada[1]] = mappassos;
+                   
+                    
+                }
+                else if (passos[i] == 3)
+                {
+                    ultimapegada[1]++;
+                    MapaMostrar[ultimapegada[0], ultimapegada[1]] = mappassos;
+                   
+
+                }
+                else if(passos[i] == 1)
+                {
+                    ultimapegada[0]--;
+                    MapaMostrar[ultimapegada[0], ultimapegada[1]] = mappassos;
+                   
+                }
+                else if (passos[i] == 2)
+                {
+                    ultimapegada[0]++;
+                    MapaMostrar[ultimapegada[0], ultimapegada[1]] = mappassos;
+                    
+                }
+
+
+            }
+            for (int i = 0; i < larguraM; i++)
+            {
+                for (int j = 0; j < alturaM; j++)
+                {
+                    if(MapaMostrar[i,j] != mappassos&& MapaMostrar[i, j] != mapaComeco) { MapaMostrar[i, j] = mapDesconhecido; }
+                   
+                    Console.Write(MapaMostrar[i, j]+" ");
+                    if (j == alturaM - 1) { Console.Write("\n"); }
+                }
+
+            }
+
+
         }
     }
 }

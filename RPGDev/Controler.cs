@@ -19,7 +19,7 @@ namespace RPGDev
 
 
         public Controler()
-        {
+        { 
             Console.OutputEncoding = Encoding.Unicode;
             menu = new Menu();
 
@@ -35,17 +35,18 @@ namespace RPGDev
             }
 
             Mp1 = new Mapa();
+            P1.Passos.Add(0);
             P1.Localização = Mp1.entrada;
             Console.Clear();
 
             string m1 = "Você entra em uma Masmorra Escura";
-            foreach (char letra in m1) { Console.Write(letra); Thread.Sleep(50); }
+            foreach (char letra in m1) { Console.Write(letra); Thread.Sleep(1); }
             Console.WriteLine();
             string m2 = "Depois de andar um pouco, você olha pra trás e percebe que se perdeu";
-            foreach (char letra in m2) { Console.Write(letra); Thread.Sleep(50); }
+            foreach (char letra in m2) { Console.Write(letra); Thread.Sleep(1); }
             Console.WriteLine();
             string m3 = "Agora perdido, você precisa decidir:";
-            foreach (char letra in m3) { Console.Write(letra); Thread.Sleep(50); }
+            foreach (char letra in m3) { Console.Write(letra); Thread.Sleep(1); }
             Console.WriteLine();
             OpcoesMap();
             Console.ReadKey();
@@ -89,6 +90,7 @@ namespace RPGDev
             Console.WriteLine("Digite 4 para ir para o Oeste \u2190");
             Console.WriteLine("Digite 5 para ver status");
             Console.WriteLine("Digite 6 para ver Mochila");
+            Console.WriteLine("Digite 7 para ver Mapa");
             int opcao = int.Parse(Console.ReadLine());
             if (ChecarCaminho(opcao) && opcao < 5)
             {
@@ -105,6 +107,11 @@ namespace RPGDev
             else if (opcao == 6)
             {
                 MostrarMochila();
+                OpcoesMap();
+            }
+            else if (opcao == 7)
+            {
+                Mp1.MostrarMApa(P1.Passos);
                 OpcoesMap();
             }
 
@@ -227,6 +234,7 @@ namespace RPGDev
                 if (cbt.RealizarCombat(P1,Mob))
                 {
                     P1.Experiencia += Mob.MobExperiencia;
+                    Mp1.formatoMapa[P1.Localização[0], P1.Localização[1]] = 0 ;
 
                     Console.WriteLine($"\nVocê ganhou {Mob.MobExperiencia} de experiência");
                     Console.WriteLine($"Seu nível é {P1.SetNivel()}");
@@ -270,10 +278,10 @@ namespace RPGDev
 
         public void Movimentar(int opcao)
         {
-            if (opcao == 1) { P1.Localização[1] = P1.Localização[1] + 1; return; }
-            if (opcao == 2) { P1.Localização[1] = P1.Localização[1] - 1; return; }
-            if (opcao == 3) { P1.Localização[0] = P1.Localização[0] + 1; return; }
-            if (opcao == 4) { P1.Localização[0] = P1.Localização[0] - 1; return; }
+            if (opcao == 1) { P1.Localização[1] ++; P1.Passos.Add(opcao); return; }
+            if (opcao == 2) { P1.Localização[1] --; P1.Passos.Add(opcao); return; }
+            if (opcao == 3) { P1.Localização[0] ++; P1.Passos.Add(opcao); return; }
+            if (opcao == 4) { P1.Localização[0] --; P1.Passos.Add(opcao); return; }
         }
 
         public void TentarFugir()
