@@ -29,10 +29,7 @@ namespace RPGDev
             Nivel = 1;
             Experiencia = 1;
             Localização = new int[2] ;
-           
-            Ataque = 5;
             Defesa = 3;
-            HP = 50;
             ExpNivel = new int[] { 30,60,90,150,200 };
             Itens = new List<Itens>();
             Passos = new List<int>();
@@ -44,15 +41,18 @@ namespace RPGDev
 
             if (ClasseLuta == "GUERREIRO")
             {
-                Ataque = g.DanoGuerreiro(Ataque);
+                Ataque = g.DanoGuerreiro();
+                HP = g.VidaGuerreiro();
             }
             if (ClasseLuta == "MAGO")
             {
-                Ataque = m.DanoMago(Ataque);
+                Ataque = m.DanoMago();
+                HP = m.VidaMago();
             }
             if (ClasseLuta == "RANGER")
             {
-                Ataque = r.DanoRanger(Ataque);
+                Ataque = r.DanoRanger();
+                HP = r.VidaRanger();
             }
         }
 
