@@ -36,10 +36,29 @@ namespace RPGDev
             ExpNivel = new int[] { 30,60,90,150,200 };
             Itens = new List<Itens>();
             Passos = new List<int>();
+            
+
+            Guerreiro g = new Guerreiro();
+            Mago m = new Mago();
+            Ranger r = new Ranger();
+
+            if (ClasseLuta == "GUERREIRO")
+            {
+                Ataque = g.DanoGuerreiro(Ataque);
+            }
+            if (ClasseLuta == "MAGO")
+            {
+                Ataque = m.DanoMago(Ataque);
+            }
+            if (ClasseLuta == "RANGER")
+            {
+                Ataque = r.DanoRanger(Ataque);
+            }
         }
 
         public override int CalcularDano()
         {
+
             Random random = new Random();
             int numeroSorteado = random.Next(1,3);
             if (numeroSorteado == 1) return ((base.CalcularDano() * Nivel) * 2);

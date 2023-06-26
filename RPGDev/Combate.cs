@@ -91,6 +91,7 @@ namespace RPGDev
 
         public void Atacar()
         {
+
             mob1.HP -= p1.Ataque;
             Console.WriteLine($" O Seu ataque causou {p1.CalcularDano()} de dano");
         }
