@@ -134,7 +134,6 @@ namespace RPGDev
                 Console.WriteLine(value);
             }
 
-            // validar opção
             Console.Write($"\n Digite o número no item para utiliza-lo!" +
                           $"\n Digite 0 para retornar a aventura!" +
                           $"\n Opção -> ");

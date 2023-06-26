@@ -43,7 +43,7 @@ namespace RPGDev
         }
         public int DanoGuerreiro()
         {
-            return 5 ;
+            return 7 ;
         }
 
         public int VidaGuerreiro()
@@ -69,7 +69,7 @@ namespace RPGDev
 
         public int DanoMago()
         {
-            return 3;
+            return 5;
         }
         public int VidaMago()
         {
