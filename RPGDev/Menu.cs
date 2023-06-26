@@ -28,7 +28,7 @@ namespace RPGDev
                     string classe = Console.ReadLine();
                     while (classe != "1" && classe != "2" && classe != "3")
                     {
-                        Console.Write($"Caro Jogador, digite uma opção valida: ");
+                        Console.Write($"\n Caro Jogador, digite uma opção valida: ");
                         classe = Console.ReadLine();
                     }
 

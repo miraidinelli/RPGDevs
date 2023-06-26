@@ -20,13 +20,12 @@ namespace RPGDev
             Nome = "Ratão do esgoto";
             TipoMonstro = "COMUM";
             MobExperiencia = (int)(10 * mult);
-            
             HP = (int)(30 * mult);
             Defesa = (int)(10 * mult);
             Ataque = (int)(3 * mult);
             return this;
-
         }
+        
         public Monstros Mob02(double mult)
         {
             IdMonstro = 1;
@@ -37,8 +36,8 @@ namespace RPGDev
             Defesa = (int)(15 * mult);
             Ataque = (int)(5 * mult);
             return this;
-
         }
+        
         public Monstros Mob03(double mult)
         {
             IdMonstro = 1;
@@ -49,15 +48,12 @@ namespace RPGDev
             Defesa = (int)(20 * mult);
             Ataque = (int)(5 * mult);
             return this;
-
         }
 
         public override int CalcularDano()
         {
-
             Random random = new Random();
             int numeroSorteado = random.Next(1, 5);
-
             if (numeroSorteado == 1) return (base.CalcularDano() * 2);
             return Ataque;
         }
