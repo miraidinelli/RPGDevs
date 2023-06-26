@@ -254,11 +254,27 @@ namespace RPGDev
                               "\n Digite 2 para tentar Fugir \U0001F3C3" +
                               "\n Opção -> ");
 
-            int op = int.Parse(Console.ReadLine());
-            if (op == 2) TentarFugir();
-            if (op == 1)
+            string valida = Console.ReadLine();
+            int opcao = 0;
+            if (valida.Length == 1 && Char.IsNumber(valida[0]))
             {
-                if (cbt.RealizarCombat(P1,Mob))
+                opcao = int.Parse(valida);
+                if (opcao <= 0 || opcao >= 3)
+                {
+                    Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
+                    OpcoesCombat();
+                }
+            }
+
+            else
+            {
+                Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
+                OpcoesCombat();
+            }
+            if (opcao == 2) TentarFugir();
+            if (opcao == 1)
+            {
+                if (cbt.RealizarCombat(P1, Mob))
                 {
                     P1.Experiencia += Mob.MobExperiencia;
 
