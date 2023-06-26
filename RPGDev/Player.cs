@@ -11,9 +11,11 @@ namespace RPGDev
         public int Experiencia { get; set; }
         public int Nivel { get; set; }
         public int[] Localização { get; set; }
+       
         public string ClasseLuta { get; set; }
         public int[] ExpNivel { get; set; }
         public List<Itens> Itens { get; set; }
+        public List<int> Passos { get; set; }
 
         public Player()
         {
@@ -26,12 +28,15 @@ namespace RPGDev
             Habilidade = habilidade;
             Nivel = 1;
             Experiencia = 1;
-            Localização = new int[] { 1,1 };
+            Localização = new int[2] ;
+           
             Ataque = 10;
             Defesa = 3;
             HP = 50;
             ExpNivel = new int[] { 30,60,90,150,200 };
             Itens = new List<Itens>();
+            Passos = new List<int>();
+            
 
             Guerreiro g = new Guerreiro();
             Mago m = new Mago();

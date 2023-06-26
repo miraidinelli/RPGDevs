@@ -35,17 +35,18 @@ namespace RPGDev
             }
 
             Mp1 = new Mapa();
-            P1.Localização = Mp1.entrada;
+            P1.Localização[0] = Mp1.Entrada[0];
+            P1.Localização[1] = Mp1.Entrada[1];
             Console.Clear();
 
             string m1 = "\n Você entra em uma Masmorra Escura";
-            foreach (char letra in m1) { Console.Write(letra); Thread.Sleep(50); }
+            foreach (char letra in m1) { Console.Write(letra); Thread.Sleep(1); }
             Console.WriteLine();
             string m2 = " Depois de andar um pouco, você olha pra trás e percebe que se perdeu";
-            foreach (char letra in m2) { Console.Write(letra); Thread.Sleep(50); }
+            foreach (char letra in m2) { Console.Write(letra); Thread.Sleep(1); }
             Console.WriteLine();
             string m3 = " Agora perdido, você precisa decidir:";
-            foreach (char letra in m3) { Console.Write(letra); Thread.Sleep(50); }
+            foreach (char letra in m3) { Console.Write(letra); Thread.Sleep(1); }
             Console.WriteLine();
             OpcoesMap();
             Console.ReadKey();
@@ -83,13 +84,14 @@ namespace RPGDev
                           $"\n Digite 4 para ir para o Oeste \u2190" +
                           $"\n Digite 5 para ver status" +
                           $"\n Digite 6 para ver Mochila" +
+                           $"\n Digite 7 para ver Mochila" +
                           $"\n Opção -> ");
             string valida = Console.ReadLine();
             int opcao = 0;
             if (valida.Length == 1 && Char.IsNumber(valida[0]))
             {
                 opcao = int.Parse(valida);
-                if (opcao <= 0 || opcao >= 7)
+                if (opcao <= 0 || opcao >= 8)
                 {
                     Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
                     OpcoesMap();
@@ -117,6 +119,11 @@ namespace RPGDev
             else if (opcao == 6)
             {
                 MostrarMochila();
+                OpcoesMap();
+            }
+            else if (opcao == 7)
+            {
+                Mp1.MostrarMapa(P1.Passos);
                 OpcoesMap();
             }
 
@@ -285,8 +292,8 @@ namespace RPGDev
 
         public bool ChecarCaminho(int opcao)
         {
-            if (opcao == 1 && P1.Localização[1] >= 9) { return false; }
-            if (opcao == 2 && P1.Localização[1] <= 1) { return false; }
+            if (opcao == 1 && P1.Localização[1] <= 1) { return false; }
+            if (opcao == 2 && P1.Localização[1] >= 9) { return false; }
             if (opcao == 3 && P1.Localização[0] >= 9) { return false; }
             if (opcao == 4 && P1.Localização[0] <= 1) { return false; }
             return true;
@@ -294,10 +301,11 @@ namespace RPGDev
 
         public void Movimentar(int opcao)
         {
-            if (opcao == 1) { P1.Localização[1] = P1.Localização[1] + 1; return; }
-            if (opcao == 2) { P1.Localização[1] = P1.Localização[1] - 1; return; }
-            if (opcao == 3) { P1.Localização[0] = P1.Localização[0] + 1; return; }
-            if (opcao == 4) { P1.Localização[0] = P1.Localização[0] - 1; return; }
+            P1.Passos.Add(opcao);
+            if (opcao == 1) { P1.Localização[0] --; return; }
+            if (opcao == 2) { P1.Localização[0] ++; return; }
+            if (opcao == 3) { P1.Localização[1] ++; return; }
+            if (opcao == 4) { P1.Localização[1] --; return; }
         }
 
         public void TentarFugir()
