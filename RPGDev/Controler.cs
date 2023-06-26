@@ -16,11 +16,13 @@ namespace RPGDev
         public Monstros Mob { get; set; }
         public Mapa Mp1 { get; set; }
         public Itens Item { get; set; }
+        public VerificaInput imput;
 
 
         public Controler()
         {
             Console.OutputEncoding = Encoding.UTF8;
+            imput = new VerificaInput();
             menu = new Menu();
 
             int menuOpcao = menu.MenuInicial();
@@ -40,13 +42,13 @@ namespace RPGDev
             Console.Clear();
 
             string m1 = "\n Você entra em uma Masmorra Escura";
-            foreach (char letra in m1) { Console.Write(letra); Thread.Sleep(70); }
+            foreach (char letra in m1) { Console.Write(letra); Thread.Sleep(1); }
             Console.WriteLine();
             string m2 = " Depois de andar um pouco, você olha pra trás e percebe que se perdeu";
-            foreach (char letra in m2) { Console.Write(letra); Thread.Sleep(70); }
+            foreach (char letra in m2) { Console.Write(letra); Thread.Sleep(1); }
             Console.WriteLine();
             string m3 = " Agora perdido, você precisa decidir:";
-            foreach (char letra in m3) { Console.Write(letra); Thread.Sleep(70); }
+            foreach (char letra in m3) { Console.Write(letra); Thread.Sleep(1); }
             Console.WriteLine();
             OpcoesMap();
             Console.ReadKey();
@@ -84,24 +86,10 @@ namespace RPGDev
                           $"\n Digite 6 para ver Mochila" +
                           $"\n Digite 7 para ver Mapa" +
                           $"\n Opção -> ");
-            string valida = Console.ReadLine();
-            int opcao = 0;
-            if (valida.Length == 1 && Char.IsNumber(valida[0]))
-            {
-                opcao = int.Parse(valida);
-                if (opcao <= 0 || opcao >= 8)
-                {
-                    Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
-                    OpcoesMap();
-                }
-            }
-
-            else
-            {
-                Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
-                OpcoesMap();
-            }
-
+            
+            int opcao = imput.GetInput(1,7);
+            
+        
             if (ChecarCaminho(opcao) && opcao < 5)
             {
                 Movimentar(opcao);
@@ -151,7 +139,7 @@ namespace RPGDev
                           $"\n Digite 0 para retornar a aventura!" +
                           $"\n Opção -> ");
 
-            int opcao = int.Parse(Console.ReadLine());
+            int opcao = imput.GetInput(1 , P1.Itens.Count);
             if (opcao == 0) { OpcoesMap(); }
             else if (opcao >= 1 && opcao <=3) { UtilizarItem(opcao - 1); }
             else if (opcao < 0 || opcao > 3)
@@ -223,7 +211,7 @@ namespace RPGDev
             if (ocupante == 4)
             {
                 Console.WriteLine($"\n Você vê um brilho a frente");
-                Thread.Sleep(1500);
+                Thread.Sleep(1000);
                 Console.WriteLine(" Apressado você corre em direção a luz");
                 Console.Clear();
                 Console.WriteLine(" Parabéns");
@@ -254,23 +242,8 @@ namespace RPGDev
                               "\n Digite 2 para tentar Fugir \U0001F3C3" +
                               "\n Opção -> ");
 
-            string valida = Console.ReadLine();
-            int opcao = 0;
-            if (valida.Length == 1 && Char.IsNumber(valida[0]))
-            {
-                opcao = int.Parse(valida);
-                if (opcao <= 0 || opcao >= 3)
-                {
-                    Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
-                    OpcoesCombat();
-                }
-            }
-
-            else
-            {
-                Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
-                OpcoesCombat();
-            }
+            int opcao = imput.GetInput(1,2);
+            
             if (opcao == 2) TentarFugir();
             if (opcao == 1)
             {

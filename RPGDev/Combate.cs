@@ -12,6 +12,7 @@ namespace RPGDev
 {
     internal class Combate
     {
+        public VerificaInput input;
         public Monstros mob1;
         public Player p1;
         int turn;
@@ -20,6 +21,7 @@ namespace RPGDev
         public Combate()
         {
             turn = 0;
+            input = new VerificaInput();
         }
 
         public bool RealizarCombat(Player player,Monstros mob)
@@ -35,39 +37,17 @@ namespace RPGDev
                               "\n Digite 2 para Defender 🛡" +
                               "\n Opção -> ");
 
-           
-                int opcao = int.Parse(Console.ReadLine());
-                if (opcao > 2 || opcao <= 0)
+
+                int opcao = input.GetInput(1, 2);
+                if (opcao == 1)
                 {
-                    Console.WriteLine("Não tente se safar da luta, Escolha uma opção válida");
-                }
-                else if (opcao == 1)
-                {
-                    if (player.ClasseLuta == "GUERREIRO")
-                    {
+                   
                         Console.WriteLine($" Você usa {player.Habilidade.NomeHabilidade}!");
                         Atacar();
                         Console.WriteLine("\n {0} realiza um ataque!", mob1.Nome);
                         MobAtaca();
-                    }
-
-                    else if (player.ClasseLuta == "MAGO")
-                    {
-                        Console.WriteLine($" Você usa {player.Habilidade.NomeHabilidade}!");
-                        Atacar();
-                        Console.WriteLine("\n{0} realiza um ataque!", mob1.Nome);
-                        MobAtaca();
-                    }
-                    else if (player.ClasseLuta == "RANGER")
-                    {
-                        Console.WriteLine($" Você usa {player.Habilidade.NomeHabilidade}!");
-                        Atacar();
-                        Console.WriteLine("\n{0} realiza um ataque!", mob1.Nome);
-                        MobAtaca();
-                    }
-                }
-
-                if (opcao == 2)
+                    
+                }else  if (opcao == 2)
                 {
                     if (p1.Defesa > 0)
                     {
@@ -95,10 +75,7 @@ namespace RPGDev
             return true;
         }
 
-        public void Combat()
-        {
-        }
-
+       
         public void Atacar()
         {
 
