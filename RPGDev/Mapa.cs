@@ -25,11 +25,11 @@ namespace RPGDev
             MontarMapa();
             
             Console.Write(".");
-            Thread.Sleep(700);
+            Thread.Sleep(300);
             Console.Write(".");
-            Thread.Sleep(700);
+            Thread.Sleep(300);
             Console.Write(".");
-            Thread.Sleep(700);
+            Thread.Sleep(300);
             Console.WriteLine("\n Mapa Gerado");
         }
 
