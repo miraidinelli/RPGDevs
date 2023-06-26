@@ -36,7 +36,11 @@ namespace RPGDev
 
             Mp1 = new Mapa();
             P1.Passos.Add(0);
-            P1.Localização = Mp1.entrada;
+
+            P1.Localização[0] = Mp1.Entrada[0];
+            P1.Localização[1] = Mp1.Entrada[1];
+
+
             Console.Clear();
 
             string m1 = "Você entra em uma Masmorra Escura";
@@ -111,7 +115,7 @@ namespace RPGDev
             }
             else if (opcao == 7)
             {
-                Mp1.MostrarMApa(P1.Passos);
+                Mp1.MostrarMapa(P1.Passos);
                 OpcoesMap();
             }
 
@@ -269,19 +273,20 @@ namespace RPGDev
 
         public bool ChecarCaminho(int opcao)
         {
-            if (opcao == 1 && P1.Localização[1] >= 9) { return false; }
-            if (opcao == 2 && P1.Localização[1] <= 1) { return false; }
-            if (opcao == 3 && P1.Localização[0] >= 9) { return false; }
-            if (opcao == 4 && P1.Localização[0] <= 1) { return false; }
+            if (opcao == 1 && P1.Localização[0] <= 1) { return false; }
+            if (opcao == 2 && P1.Localização[0] >= 9) { return false; }
+            if (opcao == 3 && P1.Localização[1] >= 9) { return false; }
+            if (opcao == 4 && P1.Localização[1] <= 1) { return false; }
             return true;
         }
 
         public void Movimentar(int opcao)
         {
-            if (opcao == 1) { P1.Localização[1] ++; P1.Passos.Add(opcao); return; }
-            if (opcao == 2) { P1.Localização[1] --; P1.Passos.Add(opcao); return; }
-            if (opcao == 3) { P1.Localização[0] ++; P1.Passos.Add(opcao); return; }
-            if (opcao == 4) { P1.Localização[0] --; P1.Passos.Add(opcao); return; }
+            P1.Passos.Add(opcao);
+            if (opcao == 1) { P1.Localização[0] --;  return; }
+            if (opcao == 2) { P1.Localização[0] ++; return; }
+            if (opcao == 3) { P1.Localização[1] ++;  return; }
+            if (opcao == 4) { P1.Localização[1] --;  return; }
         }
 
         public void TentarFugir()
@@ -322,5 +327,9 @@ namespace RPGDev
             }
 
         }
+        
+           
+
+        }
     }
-}
+

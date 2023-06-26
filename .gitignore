@@ -365,3 +365,4 @@ FodyWeavers.xsd
 # Generated build artifacts
 RPGDev/bin/
 RPGDev/obj/
+/RPGDev/packages.config
