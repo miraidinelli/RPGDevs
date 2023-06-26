@@ -26,13 +26,16 @@ namespace RPGDev
         {
             p1 = player;
             mob1 = mob;
-            while (!IsDead(p1) && !IsDead(mob1))
+
+            bool playerDead = false;
+            bool mobDead = false;
+            while (!playerDead && !mobDead)
             {
                 Console.Write("\n Digite 1 para Atacar ⚔" +
                               "\n Digite 2 para Defender 🛡" +
                               "\n Opção -> ");
 
-                // validar opção
+           
                 int opcao = int.Parse(Console.ReadLine());
                 if (opcao > 2 || opcao <= 0)
                 {
@@ -82,10 +85,13 @@ namespace RPGDev
                         MobAtaca();
                     }
                 }
+                playerDead = IsDead(p1);
+                mobDead = IsDead(mob1);
             }
-            // verificar lógica
-            if (IsDead(p1)) { return false; }
-            if (IsDead(mob1)) { return true; };
+
+           
+            if (playerDead) { return false; }
+            if (mobDead) { return true; }
             return true;
         }
 
