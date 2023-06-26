@@ -16,13 +16,13 @@ namespace RPGDev
         public Monstros Mob { get; set; }
         public Mapa Mp1 { get; set; }
         public Itens Item { get; set; }
-        public VerificaInput imput;
+        public VerificaInput input;
 
 
         public Controler()
         {
             Console.OutputEncoding = Encoding.UTF8;
-            imput = new VerificaInput();
+            input = new VerificaInput();
             menu = new Menu();
 
             int menuOpcao = menu.MenuInicial();
@@ -87,7 +87,7 @@ namespace RPGDev
                           $"\n Digite 7 para ver Mapa" +
                           $"\n Opção -> ");
             
-            int opcao = imput.GetInput(1,7);
+            int opcao = input.GetInput(1,7);
             
         
             if (ChecarCaminho(opcao) && opcao < 5)
@@ -138,7 +138,7 @@ namespace RPGDev
                           $"\n Digite 0 para retornar a aventura!" +
                           $"\n Opção -> ");
 
-            int opcao = imput.GetInput(1 , P1.Itens.Count);
+            int opcao = int.Parse(Console.ReadLine());
             if (opcao == 0) { OpcoesMap(); }
             else if (opcao >= 1 && opcao <=3) { UtilizarItem(opcao - 1); }
             else if (opcao < 0 || opcao > 3)
@@ -147,7 +147,7 @@ namespace RPGDev
                 Console.WriteLine("Procure em outra parte");
             }
 
-            Console.WriteLine(" Digite qualquer tecla para retorna ao mapa");
+            Console.WriteLine(" Digite qualquer tecla para retorna ao menu");
             Console.ReadKey();
             Console.Clear();
         }
@@ -189,7 +189,7 @@ namespace RPGDev
             Defesa - {P1.Defesa}
             Experiência - {P1.Experiencia}
             Level - {P1.Nivel}
-            Pressione qualquer tecla para retornar ao mapa
+            Pressione qualquer tecla para retornar ao menu
             ";
 
             Console.WriteLine(status);
@@ -212,6 +212,7 @@ namespace RPGDev
                 Console.WriteLine($"\n Você vê um brilho a frente");
                 Thread.Sleep(1000);
                 Console.WriteLine(" Apressado você corre em direção a luz");
+                Thread.Sleep(1000);
                 Console.Clear();
                 Console.WriteLine(" Parabéns");
                 Console.WriteLine(" Voce achou a saída");
@@ -241,7 +242,7 @@ namespace RPGDev
                               "\n Digite 2 para tentar Fugir \U0001F3C3" +
                               "\n Opção -> ");
 
-            int opcao = imput.GetInput(1,2);
+            int opcao = input.GetInput(1,2);
             
             if (opcao == 2) TentarFugir();
             if (opcao == 1)
@@ -276,7 +277,7 @@ namespace RPGDev
             if (rdn.Next(0,1) == 0)
             {
                 Itens item01 = new Itens().Loot();
-                Console.WriteLine($"\n Parabéns!!! Você Achou um {item01.NomeItem}");
+                Console.WriteLine($"\n Parabéns!!! Você Achou {item01.NomeItem}");
                 P1.Itens.Add(item01);
             }
         }
@@ -305,13 +306,13 @@ namespace RPGDev
             int i = random.Next(1,3);
             if (i == 1)
             {
-                Console.WriteLine("\nVocê conseguiu fugir do monstro! Retornou ao mapa.");
+                Console.WriteLine("\n Ufa! Você conseguiu fugir do monstro!.");
                 OpcoesMap();
             }
             if (i == 2)
             {
                 Console.WriteLine("\nVocê não conseguiu fugir. Termine a batalha.");
-                Console.WriteLine($"Você entrou em combate com o {Mob.Nome} ");
+                Console.WriteLine($"Você entrou em combate com {Mob.Nome} ");
                 Combate cbt = new Combate();
                 if (cbt.RealizarCombat(P1,Mob))
                 {
