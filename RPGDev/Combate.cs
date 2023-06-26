@@ -12,6 +12,7 @@ namespace RPGDev
 {
     internal class Combate
     {
+        public VerificaInput input;
         public Monstros mob1;
         public Player p1;
         int turn;
@@ -20,6 +21,7 @@ namespace RPGDev
         public Combate()
         {
             turn = 0;
+            input = new VerificaInput();
         }
 
         public bool RealizarCombat(Player player,Monstros mob)
@@ -33,7 +35,7 @@ namespace RPGDev
                               "\n Opção -> ");
 
                 // validar opção
-                int opcao = int.Parse(Console.ReadLine());
+                int opcao = input.GetInput(1,2);
                 if (opcao > 2 || opcao <= 0)
                 {
                     Console.WriteLine("Não tente se safar da luta, Escolha uma opção válida");
@@ -83,7 +85,7 @@ namespace RPGDev
                     }
                 }
             }
-            // verificar lógica
+            
             if (IsDead(p1)) { return false; }
             if (IsDead(mob1)) { return true; };
             return true;
