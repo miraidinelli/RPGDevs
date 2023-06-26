@@ -19,8 +19,8 @@ namespace RPGDev
 
 
         public Controler()
-        { 
-            Console.OutputEncoding = Encoding.Unicode;
+        {
+            Console.OutputEncoding = Encoding.UTF8;
             menu = new Menu();
 
             int menuOpcao = menu.MenuInicial();
@@ -35,18 +35,18 @@ namespace RPGDev
             }
 
             Mp1 = new Mapa();
-            P1.Passos.Add(0);
-            P1.Localização = Mp1.entrada;
+            P1.Localização[0] = Mp1.Entrada[0];
+            P1.Localização[1] = Mp1.Entrada[1];
             Console.Clear();
 
-            string m1 = "Você entra em uma Masmorra Escura";
-            foreach (char letra in m1) { Console.Write(letra); Thread.Sleep(1); }
+            string m1 = "\n Você entra em uma Masmorra Escura";
+            foreach (char letra in m1) { Console.Write(letra); Thread.Sleep(70); }
             Console.WriteLine();
-            string m2 = "Depois de andar um pouco, você olha pra trás e percebe que se perdeu";
-            foreach (char letra in m2) { Console.Write(letra); Thread.Sleep(1); }
+            string m2 = " Depois de andar um pouco, você olha pra trás e percebe que se perdeu";
+            foreach (char letra in m2) { Console.Write(letra); Thread.Sleep(70); }
             Console.WriteLine();
-            string m3 = "Agora perdido, você precisa decidir:";
-            foreach (char letra in m3) { Console.Write(letra); Thread.Sleep(1); }
+            string m3 = " Agora perdido, você precisa decidir:";
+            foreach (char letra in m3) { Console.Write(letra); Thread.Sleep(70); }
             Console.WriteLine();
             OpcoesMap();
             Console.ReadKey();
@@ -54,18 +54,10 @@ namespace RPGDev
 
         public void VerificarTipo(int opcao)
         {
-            Console.Write("\nDigite o Nome: ");
+            // validar nome do personagem
+            Console.Write("\n Digite o Nome do seu Personagem: ");
             string nome = Console.ReadLine();
-            //Console.WriteLine("Seu Personagem será: 1- Atacante/ 2- Defensor/ 3- Misto");
-            //string tipo = Console.ReadLine();
-            //while (tipo != "1" && tipo != "2" && tipo != "3")
-            //{
-            //    Console.Write(  $"Caro Jogador, digite uma opção valida: ");
-            //    tipo = Console.ReadLine();
-            //}
-            //if (tipo == "1") { P1 = new Player(nome,"GUERREIRO",tipo); }
-            //else if (tipo == "2") { P1 = new Player(nome,"MAGO",tipo); }
-            //else if (tipo == "3") { P1 = new Player(nome,"RANGER",tipo); }
+
 
             if (opcao == 1)
             {
@@ -84,14 +76,32 @@ namespace RPGDev
 
         public void OpcoesMap()
         {
-            Console.WriteLine("Digite 1 para ir para o Norte \u2191");
-            Console.WriteLine("Digite 2 para ir para o Sul \u2193");
-            Console.WriteLine("Digite 3 para ir para o Leste \u2192");
-            Console.WriteLine("Digite 4 para ir para o Oeste \u2190");
-            Console.WriteLine("Digite 5 para ver status");
-            Console.WriteLine("Digite 6 para ver Mochila");
-            Console.WriteLine("Digite 7 para ver Mapa");
-            int opcao = int.Parse(Console.ReadLine());
+            Console.Write($"\n Digite 1 para ir para o Norte \u2191" +
+                          $"\n Digite 2 para ir para o Sul \u2193" +
+                          $"\n Digite 3 para ir para o Leste \u2192" +
+                          $"\n Digite 4 para ir para o Oeste \u2190" +
+                          $"\n Digite 5 para ver status" +
+                          $"\n Digite 6 para ver Mochila" +
+                          $"\n Digite 7 para ver Mapa" +
+                          $"\n Opção -> ");
+            string valida = Console.ReadLine();
+            int opcao = 0;
+            if (valida.Length == 1 && Char.IsNumber(valida[0]))
+            {
+                opcao = int.Parse(valida);
+                if (opcao <= 0 || opcao >= 8)
+                {
+                    Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
+                    OpcoesMap();
+                }
+            }
+
+            else
+            {
+                Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
+                OpcoesMap();
+            }
+
             if (ChecarCaminho(opcao) && opcao < 5)
             {
                 Movimentar(opcao);
@@ -111,14 +121,14 @@ namespace RPGDev
             }
             else if (opcao == 7)
             {
-                Mp1.MostrarMApa(P1.Passos);
+                Mp1.MostrarMapa(P1.Passos);
                 OpcoesMap();
             }
 
             else
             {
-                Console.WriteLine("Nenhum caminho disponivel para este lado");
-                Console.WriteLine("Pressione qualquer tecla para continuar");
+                Console.WriteLine($"\n Nenhum caminho disponivel para este lado" +
+                                  $"\n Pressione qualquer tecla para continuar");
                 Console.ReadKey();
                 Console.Clear();
                 OpcoesMap();
@@ -127,22 +137,30 @@ namespace RPGDev
 
         private void MostrarMochila()
         {
-            Console.WriteLine($"Mochila do jogador");
-            Console.WriteLine($"Mochila Contem {P1.Itens.Count}");
+            Console.WriteLine($"\n Mochila do jogador" +
+                              $"\n Mochila Contem {P1.Itens.Count}");
             int cont = 1;
             foreach (Itens i in P1.Itens)
             {
-                Console.WriteLine($"{cont} - {i.NomeItem}");
+                string value = $" {cont} - {i.NomeItem}";
+                Console.WriteLine(value);
             }
 
-            Console.WriteLine("Digite o numero no item para utiliza-lo!");
-            Console.WriteLine("Digite 0 para retorna a aventura!");
+            // validar opção
+            Console.Write($"\n Digite o número no item para utiliza-lo!" +
+                          $"\n Digite 0 para retornar a aventura!" +
+                          $"\n Opção -> ");
 
             int opcao = int.Parse(Console.ReadLine());
             if (opcao == 0) { OpcoesMap(); }
-            else if (opcao != 0) { UtilizarItem(opcao - 1); }
+            else if (opcao >= 1 && opcao <=3) { UtilizarItem(opcao - 1); }
+            else if (opcao < 0 || opcao > 3)
+            {
+                Console.WriteLine("Você não encontra nada nessa parte da sua mochila");
+                Console.WriteLine("Procure em outra parte");
+            }
 
-            Console.WriteLine("Digite qualquer tecla para retorna ao mapa");
+            Console.WriteLine(" Digite qualquer tecla para retorna ao mapa");
             Console.ReadKey();
             Console.Clear();
         }
@@ -153,19 +171,22 @@ namespace RPGDev
             if (P1.Itens[opcao].TipoItem == 1)
             {
                 P1.HP += P1.Itens[opcao].PoderItem;
-                Console.WriteLine($"Voce Utilizou {P1.Itens[opcao].NomeItem} e recuperou {P1.Itens[opcao].PoderItem} de vida!");
+                Console.WriteLine($" Você Utilizou {P1.Itens[opcao].NomeItem}" +
+                                  $" e recuperou {P1.Itens[opcao].PoderItem} de vida!");
                 P1.Itens.RemoveAt(opcao);
             }
             else if (P1.Itens[opcao].TipoItem == 2)
             {
                 P1.Ataque += P1.Itens[opcao].Ataque;
-                Console.WriteLine($"Voce Utilizou {P1.Itens[opcao].NomeItem} e Aumentou seu ataque em  {P1.Itens[opcao].PoderItem} !");
+                Console.WriteLine($" Você Utilizou {P1.Itens[opcao].NomeItem}" +
+                                  $" e Aumentou seu ataque em  {P1.Itens[opcao].PoderItem} !");
                 P1.Itens.RemoveAt(opcao);
             }
             else if (P1.Itens[opcao].TipoItem == 3)
             {
                 P1.Defesa += P1.Itens[opcao].Defesa;
-                Console.WriteLine($"Voce Utilizou {P1.Itens[opcao].NomeItem} Aumentou sua defesa em  {P1.Itens[opcao].PoderItem} !");
+                Console.WriteLine($" Você Utilizou {P1.Itens[opcao].NomeItem}" +
+                                  $" Aumentou sua defesa em  {P1.Itens[opcao].PoderItem} !");
                 P1.Itens.RemoveAt(opcao);
             };
         }
@@ -173,14 +194,18 @@ namespace RPGDev
         private void MostrarStatus()
         {
             P1.SetNivel();
-            Console.WriteLine($"Status do jogador");
-            Console.WriteLine($"Nome - {P1.Nome}");
-            Console.WriteLine($"Vida - {P1.HP}");
-            Console.WriteLine($"Ataque - {P1.Ataque}");
-            Console.WriteLine($"Defesa - {P1.Defesa}");
-            Console.WriteLine($"Experiência - {P1.Experiencia}");
-            Console.WriteLine($"Level - {P1.Nivel}");
-            Console.WriteLine($"Pressione qualquer tecla para retornar ao mapa");
+            string status = $@"
+            Status do jogador:
+            Nome - {P1.Nome}
+            Vida - {P1.HP}
+            Ataque - {P1.Ataque}
+            Defesa - {P1.Defesa}
+            Experiência - {P1.Experiencia}
+            Level - {P1.Nivel}
+            Pressione qualquer tecla para retornar ao mapa
+            ";
+
+            Console.WriteLine(status);
             Console.ReadKey();
             Console.Clear();
         }
@@ -190,27 +215,27 @@ namespace RPGDev
             int ocupante = Mp1.formatoMapa[P1.Localização[0],P1.Localização[1]];
             if (ocupante == 0)
             {
-                Console.WriteLine("Tudo parece vazio");
-                Console.WriteLine("Não tem ninguem por perto");
+                Console.WriteLine("\n Tudo parece vazio" +
+                                  "\n Não tem ninguem por perto");
                 OpcoesMap();
             }
 
             if (ocupante == 4)
             {
-                Console.WriteLine("Você vê um brilho a frente");
+                Console.WriteLine($"\n Você vê um brilho a frente");
                 Thread.Sleep(1500);
-                Console.WriteLine("Apressado você corre em direção a luz");
+                Console.WriteLine(" Apressado você corre em direção a luz");
                 Console.Clear();
-                Console.WriteLine("Parabéns");
-                Console.WriteLine("Voce achou a saída");
-                Console.WriteLine($"Você terminou com {P1.Experiencia} de experiência");
-                Console.WriteLine("Pressione Qualquer Tecla pra Fechar");
+                Console.WriteLine(" Parabéns");
+                Console.WriteLine(" Voce achou a saída");
+                Console.WriteLine($" Você terminou com {P1.Experiencia} de experiência");
+                Console.WriteLine(" Pressione Qualquer Tecla pra Fechar");
                 Console.ReadKey();
             }
 
             if (ocupante == 1 || ocupante == 2 || ocupante == 3)
             {
-                Console.WriteLine("Você encontrou um monstro");
+                Console.WriteLine("\n Você encontrou um monstro");
                 Monstros criadormob = new Monstros();
 
                 if (ocupante == 2) { Mob = criadormob.Mob02(P1.Nivel); }
@@ -223,23 +248,40 @@ namespace RPGDev
 
         public void OpcoesCombat()
         {
-            Console.WriteLine($"\nVocê entrou em combate com o {Mob.Nome} ");
+            Console.WriteLine($"\n Você entrou em combate com o {Mob.Nome} ");
             Combate cbt = new Combate();
-            Console.WriteLine("digite 1 para ir para Batalha ⚔");
-            Console.WriteLine("digite 2 para tentar Fugir \U0001F3C3");
-            int op = int.Parse(Console.ReadLine());
-            if (op == 2) TentarFugir();
-            if (op == 1)
+            Console.Write("\n Digite 1 para ir para Batalha ⚔" +
+                              "\n Digite 2 para tentar Fugir \U0001F3C3" +
+                              "\n Opção -> ");
+
+            string valida = Console.ReadLine();
+            int opcao = 0;
+            if (valida.Length == 1 && Char.IsNumber(valida[0]))
             {
-                if (cbt.RealizarCombat(P1,Mob))
+                opcao = int.Parse(valida);
+                if (opcao <= 0 || opcao >= 3)
+                {
+                    Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
+                    OpcoesCombat();
+                }
+            }
+
+            else
+            {
+                Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
+                OpcoesCombat();
+            }
+            if (opcao == 2) TentarFugir();
+            if (opcao == 1)
+            {
+                if (cbt.RealizarCombat(P1, Mob))
                 {
                     P1.Experiencia += Mob.MobExperiencia;
-                    Mp1.formatoMapa[P1.Localização[0], P1.Localização[1]] = 0 ;
 
-                    Console.WriteLine($"\nVocê ganhou {Mob.MobExperiencia} de experiência");
-                    Console.WriteLine($"Seu nível é {P1.SetNivel()}");
+                    Console.WriteLine($"\n Você ganhou {Mob.MobExperiencia} de experiência" +
+                                      $"\n Seu nível é {P1.SetNivel()}");
                     ChanceLoot();
-                    Console.WriteLine($"\nPressione qualquer tecla para continuar sua aventura");
+                    Console.WriteLine($"\n Pressione qualquer tecla para continuar sua aventura");
                     Console.ReadKey();
                     Console.Clear();
                     OpcoesMap();
@@ -262,15 +304,15 @@ namespace RPGDev
             if (rdn.Next(0,1) == 0)
             {
                 Itens item01 = new Itens().Loot();
-                Console.WriteLine($"\nParabéns!!! Você Achou um {item01.NomeItem}");
+                Console.WriteLine($"\n Parabéns!!! Você Achou um {item01.NomeItem}");
                 P1.Itens.Add(item01);
             }
         }
 
         public bool ChecarCaminho(int opcao)
         {
-            if (opcao == 1 && P1.Localização[1] >= 9) { return false; }
-            if (opcao == 2 && P1.Localização[1] <= 1) { return false; }
+            if (opcao == 1 && P1.Localização[1] <= 1) { return false; }
+            if (opcao == 2 && P1.Localização[1] >= 9) { return false; }
             if (opcao == 3 && P1.Localização[0] >= 9) { return false; }
             if (opcao == 4 && P1.Localização[0] <= 1) { return false; }
             return true;
@@ -278,10 +320,11 @@ namespace RPGDev
 
         public void Movimentar(int opcao)
         {
-            if (opcao == 1) { P1.Localização[1] ++; P1.Passos.Add(opcao); return; }
-            if (opcao == 2) { P1.Localização[1] --; P1.Passos.Add(opcao); return; }
-            if (opcao == 3) { P1.Localização[0] ++; P1.Passos.Add(opcao); return; }
-            if (opcao == 4) { P1.Localização[0] --; P1.Passos.Add(opcao); return; }
+            P1.Passos.Add(opcao);
+            if (opcao == 1) { P1.Localização[0] --; return; }
+            if (opcao == 2) { P1.Localização[0] ++; return; }
+            if (opcao == 3) { P1.Localização[1] ++; return; }
+            if (opcao == 4) { P1.Localização[1] --; return; }
         }
 
         public void TentarFugir()
@@ -314,7 +357,7 @@ namespace RPGDev
                 else
                 {
                     Console.WriteLine(" Você Faleceu!");
-                    Console.WriteLine("Pressione qualquer tecla para encerrar");
+                    Console.WriteLine(" Pressione qualquer tecla para encerrar");
                     Console.ReadKey();
                     Environment.Exit(0);
                 }

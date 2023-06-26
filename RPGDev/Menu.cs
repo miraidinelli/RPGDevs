@@ -10,6 +10,7 @@ namespace RPGDev
     {
         public int MenuInicial()
         {
+            Console.WriteLine("Seja Bem Vindo a RataZona");
             Console.Write($"\n Criação de Personagem" +
                               $"\n Digite uma opção para começar" +
                               $"\n 1 - Criar Personagem" +
@@ -28,7 +29,7 @@ namespace RPGDev
                     string classe = Console.ReadLine();
                     while (classe != "1" && classe != "2" && classe != "3")
                     {
-                        Console.Write($"Caro Jogador, digite uma opção valida: ");
+                        Console.Write($"\n Caro Jogador, digite uma opção valida: ");
                         classe = Console.ReadLine();
                     }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -14,7 +15,7 @@ namespace RPGDev
         public Monstros mob1;
         public Player p1;
         int turn;
-        public int[] LeveisPlayer = new int[5] { 1, 2, 3, 4, 5 };
+        public int[] LeveisPlayer = new int[5] { 1,2,3,4,5 };
 
         public Combate()
         {
@@ -25,55 +26,64 @@ namespace RPGDev
         {
             p1 = player;
             mob1 = mob;
-            Console.WriteLine("");
             while (!IsDead(p1) && !IsDead(mob1))
             {
-                Console.WriteLine("");
-                Console.WriteLine("digite 1 para Atacar ⚔");
-                Console.WriteLine("digite 2 para Defender 🛡");
+                Console.Write("\n Digite 1 para Atacar ⚔" +
+                              "\n Digite 2 para Defender 🛡" +
+                              "\n Opção -> ");
+
+                // validar opção
                 int opcao = int.Parse(Console.ReadLine());
-                if (opcao == 1)
+                if (opcao > 2 || opcao <= 0)
                 {
-                    if(player.ClasseLuta == "GUERREIRO")
+                    Console.WriteLine("Não tente se safar da luta, Escolha uma opção válida");
+                }
+                else if (opcao == 1)
+                {
+                    if (player.ClasseLuta == "GUERREIRO")
                     {
-                        Console.WriteLine("Você usa Trespassar!");
+                        Console.WriteLine($" Você usa {player.Habilidade.NomeHabilidade}!");
                         Atacar();
-                        Console.WriteLine("\n{0} realiza um ataque!",mob1.Nome);
+                        Console.WriteLine("\n {0} realiza um ataque!", mob1.Nome);
                         MobAtaca();
                     }
-                    else if(player.ClasseLuta == "MAGO")
+
+                    else if (player.ClasseLuta == "MAGO")
                     {
-                        Console.WriteLine("Você usa Misseis Magicos!");
-                        Atacar();
-                        Console.WriteLine("\n{0} realiza um ataque!", mob1.Nome);
-                        MobAtaca();
-                    }
-                    else if(player.ClasseLuta == "RANGER")
-                    {
-                        Console.WriteLine("Você usa Tiro Certeiro!");
+                        Console.WriteLine($" Você usa {player.Habilidade.NomeHabilidade}!");
                         Atacar();
                         Console.WriteLine("\n{0} realiza um ataque!", mob1.Nome);
                         MobAtaca();
                     }
-                    
+                    else if (player.ClasseLuta == "RANGER")
+                    {
+                        Console.WriteLine($" Você usa {player.Habilidade.NomeHabilidade}!");
+                        Atacar();
+                        Console.WriteLine("\n{0} realiza um ataque!", mob1.Nome);
+                        MobAtaca();
+                    }
                 }
 
                 if (opcao == 2)
                 {
-                    if(p1.Defesa > 0)
+                    if (p1.Defesa > 0)
                     {
                         p1.Defesa -= 1;
                         p1.HP += 5;
-                        Console.WriteLine($"Você se defendeu e curou 5 de vida! Restam {p1.Defesa} defesas");
-                        Console.WriteLine("Vida " + p1.HP);
-                    } else if(p1.Defesa == 0 )
+                        Console.WriteLine($"\n Você se defendeu e curou 5 de vida! Restam " +
+                                          $"{p1.Defesa} defesa(s)" +
+                                          $"\n Vida {p1.HP}");
+                    }
+
+                    else if (p1.Defesa == 0)
                     {
-                        Console.WriteLine("\nVocê não possui defesas! ");
-                        Console.WriteLine("{0} realiza um ataque!", mob1.Nome);
+                        Console.WriteLine($"\n Você não possui defesa(s)!" +
+                                          $"\n {mob1.Nome} realiza um ataque!");
                         MobAtaca();
                     }
                 }
             }
+            // verificar lógica
             if (IsDead(p1)) { return false; }
             if (IsDead(mob1)) { return true; };
             return true;
@@ -85,8 +95,9 @@ namespace RPGDev
 
         public void Atacar()
         {
+
             mob1.HP -= p1.Ataque;
-            Console.WriteLine($"O Seu ataque causou {p1.CalcularDano()} de dano");
+            Console.WriteLine($" O Seu ataque causou {p1.CalcularDano()} de dano");
         }
 
         public void Defender()
@@ -102,14 +113,14 @@ namespace RPGDev
             int index = rd.Next(list.Count);
             p1.HP -= mob1.Ataque;
             Console.WriteLine
-                ($"{mob1.Nome} usou {list[index]} e causou {mob1.CalcularDano()} de Dano");
+                ($" {mob1.Nome} usou {list[index]} e causou {mob1.CalcularDano()} de Dano");
         }
 
         public bool IsDead(Personagem p1)
         {
             if (p1.HP <= 0)
             {
-                Console.WriteLine($"Os pontos de vida de {p1.Nome} chegaram a 0");
+                Console.WriteLine($" Os pontos de vida de {p1.Nome} acabaram");
                 return true;
             }
             return false;
