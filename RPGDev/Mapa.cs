@@ -19,7 +19,7 @@ namespace RPGDev
 
         public Mapa()
         {
-            Console.Write("\nGerando Mapa ");
+            Console.Write("\n Gerando Mapa ");
             formatoMapa = new int[alturaM,larguraM];
             mobSpaw = new int[] { 0,1,2,3 };
             MontarMapa();
@@ -30,7 +30,7 @@ namespace RPGDev
             Thread.Sleep(700);
             Console.Write(".");
             Thread.Sleep(700);
-            Console.WriteLine("\nMapa Gerado");
+            Console.WriteLine("\n Mapa Gerado");
         }
 
         private void MontarMapa()

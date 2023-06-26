@@ -25,6 +25,7 @@ namespace RPGDev
         {
             Nome = nome;
             ClasseLuta = classe;
+            Habilidade = habilidade;
             Nivel = 1;
             Experiencia = 1;
             Localização = new int[2] ;
@@ -41,7 +42,6 @@ namespace RPGDev
         {
             Random random = new Random();
             int numeroSorteado = random.Next(1,3);
-
             if (numeroSorteado == 1) return ((base.CalcularDano() * Nivel) * 2);
             return (Ataque * Nivel);
         }

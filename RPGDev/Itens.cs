@@ -19,7 +19,6 @@ namespace RPGDev
         // Itens 1 = poções 2 = armas 3 = escudos
         public Itens()
         {
-
         }
 
         public Itens Pocao()
