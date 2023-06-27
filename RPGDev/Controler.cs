@@ -125,6 +125,14 @@ namespace RPGDev
 
         private void MostrarMochila()
         {
+            if(P1.Itens.Count == 0)
+            {
+                Console.WriteLine("Sua Mochila esta vazia!\n" +
+                    "Pressione qualquer tecla para continuar");
+                Console.ReadKey();
+                Console.Clear();
+                return;
+            }
             Console.WriteLine($"\n Mochila do jogador" +
                               $"\n Mochila Contem {P1.Itens.Count}");
             int cont = 1;
@@ -138,10 +146,10 @@ namespace RPGDev
                           $"\n Digite 0 para retornar a aventura!" +
                           $"\n Opção -> ");
 
-            int opcao = int.Parse(Console.ReadLine());
+            int opcao = input.GetInput(0, P1.Itens.Count, true);
             if (opcao == 0) { OpcoesMap(); }
-            else if (opcao >= 1 && opcao <=3) { UtilizarItem(opcao - 1); }
-            else if (opcao < 0 || opcao > 3)
+            else if (opcao >= 1 && opcao <= P1.Itens.Count) { UtilizarItem(opcao - 1); }
+            else if (opcao < 0 || opcao > P1.Itens.Count)
             {
                 Console.WriteLine("Você não encontra nada nessa parte da sua mochila");
                 Console.WriteLine("Procure em outra parte");
@@ -284,10 +292,10 @@ namespace RPGDev
 
         public bool ChecarCaminho(int opcao)
         {
-            if (opcao == 1 && P1.Localização[1] <= 1) { return false; }
-            if (opcao == 2 && P1.Localização[1] >= 9) { return false; }
-            if (opcao == 3 && P1.Localização[0] >= 9) { return false; }
-            if (opcao == 4 && P1.Localização[0] <= 1) { return false; }
+            if (opcao == 1 && P1.Localização[0] <= 1) { return false; }
+            if (opcao == 2 && P1.Localização[0] >= 9) { return false; }
+            if (opcao == 3 && P1.Localização[1] >= 9) { return false; }
+            if (opcao == 4 && P1.Localização[1] <= 1) { return false; }
             return true;
         }
 

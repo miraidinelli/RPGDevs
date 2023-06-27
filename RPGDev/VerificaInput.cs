@@ -43,5 +43,37 @@ namespace RPGDev
             }
 
         }
+        public int GetInput(int min, int max,bool returno)
+        {
+            string valida = "";
+
+            while (true)
+            {
+                valida = Console.ReadLine();
+
+                if (valida.All(char.IsDigit) && valida != "")
+                {
+
+                    {
+
+                        if (int.Parse(valida) <= max && int.Parse(valida) >= min)
+                        {
+                            return int.Parse(valida);
+                        }
+                        else
+                        {
+                            return 999;
+
+                        }
+                    }
+                }
+                else
+                {
+                    return 999;
+
+                }
+            }
+
+        }
     }
 }
