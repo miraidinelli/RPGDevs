@@ -17,8 +17,8 @@ namespace RPGDev
             {
                 valida = Console.ReadLine();
 
-                if (valida.All(char.IsDigit))
-                {
+                if (valida.All(char.IsDigit) && valida != "")
+                    {
 
                     if (int.Parse(valida) <= max && int.Parse(valida) >= min)
                     {
