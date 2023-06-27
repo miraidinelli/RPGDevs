@@ -284,10 +284,10 @@ namespace RPGDev
 
         public bool ChecarCaminho(int opcao)
         {
-            if (opcao == 1 && P1.Localização[1] <= 1) { return false; }
-            if (opcao == 2 && P1.Localização[1] >= 9) { return false; }
-            if (opcao == 3 && P1.Localização[0] >= 9) { return false; }
-            if (opcao == 4 && P1.Localização[0] <= 1) { return false; }
+            if (opcao == 1 && P1.Localização[0] <= 1) { return false; }
+            if (opcao == 2 && P1.Localização[0] >= 9) { return false; }
+            if (opcao == 3 && P1.Localização[1] >= 9) { return false; }
+            if (opcao == 4 && P1.Localização[1] <= 1) { return false; }
             return true;
         }
 
