@@ -22,15 +22,16 @@ namespace RPGDev
 
                     {
 
-                    if (int.Parse(valida) <= max && int.Parse(valida) >= min)
-                    {
-                        return int.Parse(valida);
-                    }
-                    else
-                    {
-                        Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
-                        Console.Write("Opção -> ");
+                        if (int.Parse(valida) <= max && int.Parse(valida) >= min)
+                        {
+                            return int.Parse(valida);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
+                            Console.Write("Opção -> ");
 
+                        }
                     }
                 }
                 else
