@@ -20,6 +20,8 @@ namespace RPGDev
                 if (valida.All(char.IsDigit) && valida != "")
                 {
 
+                    {
+
                     if (int.Parse(valida) <= max && int.Parse(valida) >= min)
                     {
                         return int.Parse(valida);
