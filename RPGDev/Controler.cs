@@ -138,7 +138,7 @@ namespace RPGDev
                           $"\n Digite 0 para retornar a aventura!" +
                           $"\n Opção -> ");
 
-            int opcao = int.Parse(Console.ReadLine());
+            int opcao = input.GetInput(0, P1.Itens.Count);
             if (opcao == 0) { OpcoesMap(); }
             else if (opcao >= 1 && opcao <=3) { UtilizarItem(opcao - 1); }
             else if (opcao < 0 || opcao > 3)
