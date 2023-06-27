@@ -18,6 +18,8 @@ namespace RPGDev
                 valida = Console.ReadLine();
 
                 if (valida.All(char.IsDigit) && valida != "")
+                {
+
                     {
 
                     if (int.Parse(valida) <= max && int.Parse(valida) >= min)
@@ -27,12 +29,14 @@ namespace RPGDev
                     else
                     {
                         Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
+                        Console.Write("Opção -> ");
 
                     }
                 }
                 else
                 {
                     Console.WriteLine($"\n Caro Jogador, digite uma opção valida: ");
+                    Console.Write("Opção -> ");
 
                 }
             }
